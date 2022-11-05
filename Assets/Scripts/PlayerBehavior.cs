@@ -7,10 +7,11 @@ public class PlayerBehavior : MonoBehaviour
     private float characterSpeed = 5f;
     public float characterJumpSpeed = 5f;
     private bool isJumping = false;
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -24,11 +25,13 @@ public class PlayerBehavior : MonoBehaviour
             isJumping = true;
         }
         if (Input.GetKey("a")) {
+            rb.velocity = new Vector2(0, rb.velocity.y);
             Vector3 pos = transform.position;
             pos.x -= characterSpeed * Time.smoothDeltaTime;
             transform.position = pos;
         }
         if (Input.GetKey("d")) {
+            rb.velocity = new Vector2(0, rb.velocity.y);
             Vector3 pos = transform.position;
             pos.x += characterSpeed * Time.smoothDeltaTime;
             transform.position = pos;

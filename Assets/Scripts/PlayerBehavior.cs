@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private float characterSpeed = 8.0f;
+    private float characterSpeed = 5f;
+    public float characterJumpSpeed = 5f;
     private bool isJumping = false;
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class PlayerBehavior : MonoBehaviour
     }
     void PlayerControl() {
         if (Input.GetKeyDown("space") && !isJumping) {
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0, 15, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector3(0, characterJumpSpeed, 0);
             isJumping = true;
         }
         if (Input.GetKey("a")) {

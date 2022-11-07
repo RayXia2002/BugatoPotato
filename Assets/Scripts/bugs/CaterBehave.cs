@@ -37,6 +37,12 @@ public class CaterBehave : MonoBehaviour
             moving = false;
             attk = false;
             gameObject.GetComponent<Animator>().SetBool("isDie", true);
+            StartCoroutine(Die());
         }
+    }
+
+    private IEnumerator Die() {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(this.gameObject);
     }
 }

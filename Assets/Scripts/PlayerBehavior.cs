@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private float characterSpeed = 5f;
+    public float characterSpeed = 5f;
     public float characterJumpSpeed = 5f;
     private bool isJumping = false;
     private Rigidbody2D rb;

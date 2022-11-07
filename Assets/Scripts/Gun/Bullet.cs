@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
         player = GameObject.Find("Dale");
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(transform.right * speed);
-
+        PushBack();
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
         
     }
@@ -40,9 +40,9 @@ public class Bullet : MonoBehaviour
     {
         string tag = other.gameObject.tag;
 
-        if (tag == "Ground")
+        if (tag == "Ground" || tag == "bug")
         {
-            PushBack();
+            //PushBack();
             if (dieEffect != null)
             {
                 Instantiate(dieEffect, transform.position, Quaternion.identity);

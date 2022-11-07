@@ -4,15 +4,45 @@ using UnityEngine;
 
 public class FlyBehave : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float speed;
+    private bool attk;
+    private float lastAtk;
+    private float atkSpd = 4f;
+    private bool moving = true;
+    public Bullet bullet;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (moving) {
+            // update position
+            transform.position += transform.right * Time.smoothDeltaTime * speed;
+        }
+
+        bool shouldAttk = attk && (Time.time - lastAtk >= atkSpd);
+        if (shouldAttk) {
+            lastAtk = Time.time;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "stem") {
+            attk = true;
+            moving = false;
+            gameObject.GetComponent<Animator>().SetBool("isAttk", true);
+        }
+
+        if (other.gameObject.tag == "bullet") {
+            moving = false;
+            attk = false;
+            gameObject.GetComponent<Animator>().SetBool("isDie", true);
+            StartCoroutine(Die());
+        }
+    }
+
+    private IEnumerator Die() {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(this.gameObject);
     }
 }

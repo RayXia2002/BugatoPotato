@@ -547,7 +547,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CaterFullAnim 1_14: -930983686
+      CaterFullAnim 1_12: 143360350
       CaterFullAnim 1_16: 101961763
       CaterFullAnim 1_9: 552674847
       CaterFullAnim 1_3: 1135337299
@@ -564,9 +564,9 @@ TextureImporter:
       CaterFullAnim 1_18: -513920863
       CaterFullAnim 1_7: -1758270117
       CaterFullAnim 1_8: 413061640
-      CaterFullAnim 1_19: 2121493816
       CaterFullAnim 1_4: 952749350
-      CaterFullAnim 1_12: 143360350
+      CaterFullAnim 1_19: 2121493816
+      CaterFullAnim 1_14: -930983686
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

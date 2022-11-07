@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
     {
         string tag = other.gameObject.tag;
 
-        if (tag == "Ground")
+        if (tag == "Ground" || tag == "bug")
         {
             PushBack();
             if (dieEffect != null)

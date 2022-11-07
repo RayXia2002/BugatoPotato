@@ -10,7 +10,7 @@ public class BugSpawner : MonoBehaviour
     public GameObject caterSpawn;
 
     // values for spawning rate
-    private float spawnRate = 5f;
+    public float spawnRate = 3f;
     private float lastSpawn = 0f;
 
     // min max for spawning
@@ -46,7 +46,7 @@ public class BugSpawner : MonoBehaviour
     }
 
 
-    // spawns a caterpillar from random direction (left or right)
+    // spawns a caterpillar from random direction (left:0 or right:1)
     private void spawnCater() {
         // get random direction
         int direction = Random.Range(0, 2);
@@ -55,16 +55,20 @@ public class BugSpawner : MonoBehaviour
         float xval = direction == 1 ? X_MIN : X_MAX;
 
         // create cater
-        Vector3 pos = new Vector3(xval, CAT_Y_VAL, 0f);
+        Vector3 pos = new Vector3(xval, CAT_Y_VAL, -1f);
         GameObject cater = Instantiate(caterSpawn, pos, Quaternion.identity);
 
-        if (direction == 0) {
-            // face the left if direction is left
-            transform.RotateAround(transform.position, transform.up, Time.deltaTime * 180f);
+        if (direction == 1) {
+            // face the right if direction is right
+            Vector3 origScale = cater.transform.localScale;
+            origScale.x *= -1;
+            cater.transform.localScale = origScale;
+            // change walking direction
+            cater.GetComponent<CaterBehave>().speed = -1* cater.GetComponent<CaterBehave>().speed;
         }
     }
 
-    // spawns a beetle from random direction (left or right)
+    // spawns a beetle from random direction (left:0 or right:1)
     private void spawnBeetle() {
         // get random direction
         int direction = Random.Range(0, 2);
@@ -73,12 +77,16 @@ public class BugSpawner : MonoBehaviour
         float xval = direction == 1 ? X_MIN : X_MAX;
 
         // create fly beetle
-        Vector3 pos = new Vector3(xval, BEET_Y_VAL, 0f);
+        Vector3 pos = new Vector3(xval, BEET_Y_VAL, -1f);
         GameObject beetle = Instantiate(beetleSpawn, pos, Quaternion.identity);
 
         if (direction == 0) {
             // face the left if direction is left
-            transform.RotateAround(transform.position, transform.up, Time.deltaTime * 180f);
+            Vector3 origScale = beetle.transform.localScale;
+            origScale.x *= -1;
+            beetle.transform.localScale = origScale;
+            // change walking direction
+            beetle.GetComponent<CaterBehave>().speed = -1 * beetle.GetComponent<CaterBehave>().speed;
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerOneWayPlatform : MonoBehaviour
 {
     
-    private GameObject currentOneWayPlatform;
+    private GameObject currentOneWayPlatform = null;
     [SerializeField] private BoxCollider2D playerCollider;
     void Start()
     {

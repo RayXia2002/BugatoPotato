@@ -18,6 +18,7 @@ public class BugSpawner : MonoBehaviour
     private const float X_MAX = 3.6f;
     private const float BEET_Y_VAL = -1.6f;
     private const float CAT_Y_VAL = -1.67f;
+    private const float FLY_Y_VAL = -0.2f;
 
 
     // Update is called once per frame
@@ -76,7 +77,7 @@ public class BugSpawner : MonoBehaviour
         // set xval depending on direction
         float xval = direction == 1 ? X_MIN : X_MAX;
 
-        // create fly beetle
+        // create beetle
         Vector3 pos = new Vector3(xval, BEET_Y_VAL, -1f);
         GameObject beetle = Instantiate(beetleSpawn, pos, Quaternion.identity);
 
@@ -86,13 +87,30 @@ public class BugSpawner : MonoBehaviour
             origScale.x *= -1;
             beetle.transform.localScale = origScale;
             // change walking direction
-            beetle.GetComponent<CaterBehave>().speed = -1 * beetle.GetComponent<CaterBehave>().speed;
+            beetle.GetComponent<BeetleBehave>().speed = -1 * beetle.GetComponent<BeetleBehave>().speed;
         }
     }
 
     // spawns a flying beetle from random direction, anywhere between y min/max and x min/max
     private void spawnFly() {
-        Vector3 pos = new Vector3(-3.6f, -0.2f, 0f);
+        // get random direction
+        int direction = Random.Range(0, 2);
+
+        // set xval depending on direction
+        float xval = direction == 1 ? X_MIN : X_MAX;
+
+        // create flying beetle
+        //Vector3 pos = new Vector3(-3.6f, -0.2f, 0f);
+        Vector3 pos = new Vector3(xval, FLY_Y_VAL, -1f);
         GameObject flyBeetle = Instantiate(flySpawn, pos, Quaternion.identity);
+
+        if (direction == 0) {
+            // face the left if direction is left
+            Vector3 origScale = flyBeetle.transform.localScale;
+            origScale.x *= -1;
+            flyBeetle.transform.localScale = origScale;
+            // change walking direction
+            flyBeetle.GetComponent<FlyBehave>().speed = -1 * flyBeetle.GetComponent<FlyBehave>().speed;
+        }
     }
 }

@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerOneWayPlatform : MonoBehaviour
 {
     
-    private GameObject currentOneWayPlatform = null;
-    [SerializeField] public BoxCollider2D feetCollider;
+    //private GameObject currentOneWayPlatform = null;
+    //[SerializeField] public BoxCollider2D feetCollider;
+    public bool coll;
+    public PlatformEffector2D platform;
     void Start()
     {
         
@@ -15,25 +17,19 @@ public class PlayerOneWayPlatform : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("s")) {
-            if (currentOneWayPlatform != null) {
-                StartCoroutine(DisableCollision());
-            }
+            platform.surfaceArc = 0f;
+            StartCoroutine(DisableCollision());
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.CompareTag("OneWayPlatform")) {
-            currentOneWayPlatform = other.gameObject;
-        }
+            coll = true;
     }
     private void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.CompareTag("OneWayPlatform")) {
-            currentOneWayPlatform = null;
-        }
+            coll = false;
     }
     private IEnumerator DisableCollision() {
-        BoxCollider2D platformCollider = currentOneWayPlatform.GetComponent<BoxCollider2D>();
-        Physics2D.IgnoreCollision(feetCollider, platformCollider);
-        yield return new WaitForSeconds(0.75f);
-        Physics2D.IgnoreCollision(feetCollider, platformCollider, false);
+        yield return new WaitForSeconds(0.3f);
+        platform.surfaceArc = 90f;
+
     }
 }

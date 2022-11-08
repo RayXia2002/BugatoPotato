@@ -10,7 +10,7 @@ public class FlyBehave : MonoBehaviour
     private float atkSpd = 4f;
     private bool moving = true;
     public Bullet bullet;
-
+    Collider2D col;
     // Update is called once per frame
     void Update()
     {
@@ -36,6 +36,8 @@ public class FlyBehave : MonoBehaviour
         if (other.gameObject.tag == "bullet") {
             moving = false;
             attk = false;
+            col = this.gameObject.GetComponent<Collider2D>();
+            col.enabled = false;
             gameObject.GetComponent<Animator>().SetBool("isDie", true);
             StartCoroutine(Die());
         }

@@ -18,7 +18,7 @@ public class BugSpawner : MonoBehaviour
     private const float X_MAX = 3.6f;
     private const float BEET_Y_VAL = -1.6f;
     private const float CAT_Y_VAL = -1.67f;
-    private const float FLY_Y_VAL = -0.2f;
+    //private const float FLY_Y_VAL = -0.2f;
 
 
     // Update is called once per frame
@@ -95,13 +95,13 @@ public class BugSpawner : MonoBehaviour
     private void spawnFly() {
         // get random direction
         int direction = Random.Range(0, 2);
-
+        float height = (Random.Range(0f, 1.5f) - 1f);
         // set xval depending on direction
         float xval = direction == 1 ? X_MIN : X_MAX;
 
         // create flying beetle
         //Vector3 pos = new Vector3(-3.6f, -0.2f, 0f);
-        Vector3 pos = new Vector3(xval, FLY_Y_VAL, -1f);
+        Vector3 pos = new Vector3(xval, height, -1f);
         GameObject flyBeetle = Instantiate(flySpawn, pos, Quaternion.identity);
 
         if (direction == 0) {

@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 147220756}
   - component: {fileID: 147220755}
   - component: {fileID: 147220754}
+  - component: {fileID: 147220757}
   m_Layer: 7
   m_Name: branches 2 left
   m_TagString: OneWayPlatform
@@ -623,6 +624,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &147220757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147220752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 147220754}
 --- !u!1 &150262072
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +684,7 @@ GameObject:
   - component: {fileID: 220202597}
   - component: {fileID: 220202596}
   - component: {fileID: 220202595}
+  - component: {fileID: 220202598}
   m_Layer: 7
   m_Name: branches 1 left
   m_TagString: OneWayPlatform
@@ -877,6 +893,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &220202598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220202593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 220202595}
 --- !u!1 &267694866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1171,6 @@ GameObject:
   - component: {fileID: 393066217}
   - component: {fileID: 393066214}
   - component: {fileID: 393066216}
-  - component: {fileID: 393066212}
   - component: {fileID: 393066219}
   - component: {fileID: 393066220}
   m_Layer: 8
@@ -1151,19 +1180,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &393066212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393066211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  feetCollider: {fileID: 428669433}
 --- !u!50 &393066214
 Rigidbody2D:
   serializedVersion: 4
@@ -1265,7 +1281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393066211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2, y: -1.47, z: 0}
+  m_LocalPosition: {x: 2.2, y: -1.003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1649,6 +1665,7 @@ GameObject:
   - component: {fileID: 485556721}
   - component: {fileID: 485556723}
   - component: {fileID: 485556724}
+  - component: {fileID: 485556725}
   m_Layer: 7
   m_Name: branches 2 right
   m_TagString: OneWayPlatform
@@ -1885,6 +1902,20 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &485556725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485556720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 485556724}
 --- !u!1 &485574471
 GameObject:
   m_ObjectHideFlags: 0
@@ -2527,6 +2558,7 @@ GameObject:
   - component: {fileID: 738634693}
   - component: {fileID: 738634695}
   - component: {fileID: 738634696}
+  - component: {fileID: 738634697}
   m_Layer: 7
   m_Name: branches 3 right
   m_TagString: OneWayPlatform
@@ -2670,6 +2702,20 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &738634697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738634692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 738634696}
 --- !u!1 &764045005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,6 +3278,7 @@ GameObject:
   - component: {fileID: 876231747}
   - component: {fileID: 876231746}
   - component: {fileID: 876231745}
+  - component: {fileID: 876231748}
   m_Layer: 7
   m_Name: branches 3 left
   m_TagString: OneWayPlatform
@@ -3375,6 +3422,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &876231748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876231743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 876231745}
 --- !u!1 &890333443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4059,6 +4120,7 @@ GameObject:
   - component: {fileID: 1075416244}
   - component: {fileID: 1075416246}
   - component: {fileID: 1075416247}
+  - component: {fileID: 1075416248}
   m_Layer: 7
   m_Name: branches 1 right
   m_TagString: OneWayPlatform
@@ -4267,6 +4329,20 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &1075416248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075416243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 1075416247}
 --- !u!1 &1076073207
 GameObject:
   m_ObjectHideFlags: 0
@@ -4279,6 +4355,7 @@ GameObject:
   - component: {fileID: 1076073208}
   - component: {fileID: 1076073211}
   - component: {fileID: 1076073210}
+  - component: {fileID: 1076073212}
   m_Layer: 7
   m_Name: branches 1_1
   m_TagString: OneWayPlatform
@@ -4418,6 +4495,20 @@ PolygonCollider2D:
       - {x: 0.38183713, y: -0.026419654}
       - {x: 0.38091862, y: -0.015208746}
       - {x: 0.3518372, y: 0.014791239}
+--- !u!114 &1076073212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076073207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 0}
 --- !u!1 &1097971024
 GameObject:
   m_ObjectHideFlags: 0
@@ -7337,7 +7428,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.31113842, y: 0.11798525}
-  m_ConnectedAnchor: {x: -0.24613833, y: 0.057985306}
+  m_ConnectedAnchor: {x: -0.1841383, y: 0.08698523}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

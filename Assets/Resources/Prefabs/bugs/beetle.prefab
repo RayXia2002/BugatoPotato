@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3458852921978807188}
   - component: {fileID: 3458852921978807187}
   - component: {fileID: 3458852921978807186}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: beetle
   m_TagString: bug
   m_Icon: {fileID: 0}

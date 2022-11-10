@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.4
+  atkDmg: 1
   bullet: {fileID: 5106022476500582359, guid: ba166f779fa9d254496e2b001def6a5e, type: 3}
 --- !u!95 &3458852921978807186
 Animator:

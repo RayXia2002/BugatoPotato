@@ -9,8 +9,10 @@ public class BeetleBehave : MonoBehaviour
     private float lastAtk;
     private float atkSpd = 4f;
     private bool moving = true;
+    public float atkDmg = 1f;
     public Bullet bullet;
     Collider2D col;
+    Collider2D plant;
     // Update is called once per frame
     void Update()
     {
@@ -20,16 +22,21 @@ public class BeetleBehave : MonoBehaviour
         }
 
         bool shouldAttk = attk && (Time.time - lastAtk >= atkSpd);
-        if (shouldAttk) {
+        if (shouldAttk && col.IsTouching(plant)) {
             lastAtk = Time.time;
+            IDamageable damageable = plant.GetComponent<IDamageable>();
+            damageable.OnHit(atkDmg);
         }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "stem") {
+
             attk = true;
             moving = false;
+            plant = other.gameObject.GetComponent<Collider2D>();
+            col = this.gameObject.GetComponent<Collider2D>();
             gameObject.GetComponent<Animator>().SetBool("isAttk", true);
         }
 

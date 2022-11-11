@@ -50,6 +50,11 @@ public class BeetleBehave : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("this triggered me");
+    }
+
     private IEnumerator Die() {
         yield return new WaitForSeconds(1.0f);
         Destroy(this.gameObject);

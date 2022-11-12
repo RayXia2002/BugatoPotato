@@ -2,60 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehavior : MonoBehaviour
+public class PlayerBehavior : MonoBehaviour, IDamageable
 {
-    public float characterSpeed = 5f;
-    public float characterJumpSpeed = 5f;
-    private bool isJumping = false;
+    public float health { get; set; }
+    public int maxHearts = 3;
+    public bool invincible = false;
+    public SpriteRenderer armSpriteRenderer;
+    public PlayerHealthManager healthHearts;
     private Rigidbody2D rb;
-    public GameObject stem, beetle, cater, fly, hitBox;
-    public Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private Material originalMaterial;
     // Start is called before the first frame update
     void Start()
     {
-        
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        Physics2D.IgnoreCollision(stem.GetComponent<Collider2D>(), hitBox.GetComponent<Collider2D>());
-        Physics2D.IgnoreCollision(beetle.GetComponent<Collider2D>(), hitBox.GetComponent<Collider2D>());
-        Physics2D.IgnoreCollision(cater.GetComponent<Collider2D>(), hitBox.GetComponent<Collider2D>());
-        Physics2D.IgnoreCollision(fly.GetComponent<Collider2D>(), hitBox.GetComponent<Collider2D>());
-
-        Physics2D.IgnoreCollision(stem.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-        Physics2D.IgnoreCollision(beetle.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-        Physics2D.IgnoreCollision(cater.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-        Physics2D.IgnoreCollision(fly.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-
+        health = 6;
+        healthHearts.SetHearts(health, maxHearts);
+        rb = gameObject.GetComponent<Rigidbody2D>();    
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalMaterial = spriteRenderer.material;
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerControl();
+        if (Input.GetKeyDown("y")) 
+        {
+            health = 6;
+            healthHearts.SetHearts(health, maxHearts);
+        }
     }
 
-    void PlayerControl() {
-        animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
-        if (Input.GetKeyDown("space") && !isJumping) {
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0, characterJumpSpeed, 0);
-            isJumping = true;
-        }
-        if (Input.GetKey("a")) {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            Vector3 pos = transform.position;
-            pos.x -= characterSpeed * Time.smoothDeltaTime;
-            transform.position = pos;
-            
-        }
-        if (Input.GetKey("d")) {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            Vector3 pos = transform.position;
-            pos.x += characterSpeed * Time.smoothDeltaTime;
-            transform.position = pos;
+    public void OnHit(float damage)
+    {
+        if (!invincible)
+        {
+        
+            health -= damage;
+            healthHearts.SetHearts(health, maxHearts);
+            //rb.AddForce(knockback, ForceMode2D.Impulse);
+
+            invincible = true;
+            StartCoroutine(InvinciblityTimer());
         }
     }
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("OneWayPlatform")) {
-            isJumping = false;
-        }
+
+    private IEnumerator InvinciblityTimer() {
+        spriteRenderer.color = Color.red;
+        armSpriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(1f);
+        spriteRenderer.color = Color.white;
+        armSpriteRenderer.color = Color.white;
+        invincible = false;
     }
+
 }

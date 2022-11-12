@@ -10,6 +10,7 @@ public class CaterBehave : MonoBehaviour
     private float atkSpd = 3f;
     private bool moving = true;
     public float atkDmg = 1f;
+    public float playerAtkDmg = 1f;
     public Bullet bullet;
     Collider2D col;
     Collider2D plant;
@@ -47,6 +48,15 @@ public class CaterBehave : MonoBehaviour
             gameObject.GetComponent<Animator>().SetBool("isDie", true);
             StartCoroutine(Die());
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+       if (other.gameObject.tag == "Player")
+       {
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            damageable.OnHit(playerAtkDmg);
+       }
     }
 
     private IEnumerator Die() {

@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class PlantBehavior : MonoBehaviour, IDamageable
 {
-    public float Health { get; set; }
+    public float health { get; set; }
     public HealthBar healthBar;
 
     public void OnHit(float damage)
     {
-        Health -= damage;
-        healthBar.SetHealth(Health);
+        health -= damage;
+        healthBar.SetHealth(health);
     }
  
     void Start()
     {
-        Health = 100f;
-        healthBar.SetMaxHealth(Health);
+        health = 100f;
+        healthBar.SetMaxHealth(health);
     }
 
     void Update()
     {
-        healthBar.SetHealth(Health);
+        healthBar.SetHealth(health);
     }
 
 }

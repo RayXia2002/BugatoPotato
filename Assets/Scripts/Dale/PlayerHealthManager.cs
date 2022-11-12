@@ -9,30 +9,25 @@ public class PlayerHealthManager : MonoBehaviour
     void Start()
     {
 
-        UpdateHearts(6);
+        //SetHearts(6);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void UpdateHearts(int currentHealth)
+    public void SetHearts(float currentHealth, int maxHearts)
     {
         ClearHearts();
-        int heartTracker = currentHealth;
-        int numHearts = (int)(currentHealth / 2);
+        float heartTracker = currentHealth;
+        float numHearts = (int)(currentHealth / 2);
         numHearts = numHearts + (currentHealth % 2);
-        for (int i = 0; i < numHearts; i++)
+        
+        for (int i = 0; i < maxHearts; i++)
         {
-            Debug.Log(heartTracker);
+            
             if (heartTracker - 2 >= 0)
             {
                 CreateHeart(2);
                 heartTracker -= 2;
             }
-            else if (heartTracker - 2 >= -2)
+            else if (heartTracker - 2 > -2)
             {
                 CreateHeart(1);
                 heartTracker -= 2;

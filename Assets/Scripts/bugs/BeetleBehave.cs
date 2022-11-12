@@ -10,6 +10,7 @@ public class BeetleBehave : MonoBehaviour
     private float atkSpd = 4f;
     private bool moving = true;
     public float atkDmg = 1f;
+    public float playerAtkDmg = 1f;
     public Bullet bullet;
     Collider2D col;
     Collider2D plant;
@@ -52,7 +53,11 @@ public class BeetleBehave : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("this triggered me");
+       if (other.gameObject.tag == "Player")
+       {
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            damageable.OnHit(playerAtkDmg);
+       }
     }
 
     private IEnumerator Die() {

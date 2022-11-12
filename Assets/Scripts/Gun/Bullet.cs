@@ -30,10 +30,6 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Time.time - timeStart > timeElasped)
-        {
-            Destroy(gameObject);
-        }*/
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -42,7 +38,6 @@ public class Bullet : MonoBehaviour
 
         if (tag == "Ground" || tag == "bug")
         {
-            //PushBack();
             if (dieEffect != null)
             {
                 Instantiate(dieEffect, transform.position, Quaternion.identity);
@@ -65,6 +60,5 @@ public class Bullet : MonoBehaviour
 
         if(direction.x > 0) x = -x;
         player.GetComponent<Rigidbody2D>().AddForce(new Vector2(x * knockback, -y * knockback), ForceMode2D.Impulse);
-        Debug.Log(push);
     }
 }

@@ -30,10 +30,10 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - timeStart > timeElasped)
+        /*if (Time.time - timeStart > timeElasped)
         {
             Destroy(gameObject);
-        }
+        }*/
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -55,16 +55,16 @@ public class Bullet : MonoBehaviour
     void PushBack()
     {
         Vector3 direction = gameObject.transform.right;
-        Vector2 push = new Vector2(Mathf.Abs(direction.x), Mathf.Abs(direction.y));
+        Vector2 push = new Vector2(Mathf.Abs(direction.x), direction.y);
 
         float x = Mathf.Cos(push.x);
         float y = Mathf.Sin(push.y);
 
         if (push.x < .5) x = 0;
-        if (push.y < .5) y = 0;
+        if (push.y < .5 && push.y > -.5) y = 0;
 
         if(direction.x > 0) x = -x;
-        player.GetComponent<Rigidbody2D>().AddForce(new Vector2(x * knockback, y * knockback), ForceMode2D.Impulse);
+        player.GetComponent<Rigidbody2D>().AddForce(new Vector2(x * knockback, -y * knockback), ForceMode2D.Impulse);
         Debug.Log(push);
     }
 }

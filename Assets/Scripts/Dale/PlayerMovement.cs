@@ -9,12 +9,17 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     private Rigidbody2D rb;
     public Animator animator;
+
+    private float moveStart = 0;
+    private float moveEnd = 0;
+    private bool isMoving;
+    public float rampUpTime;
+    public float rampDownTime;
+    private bool direction;
     // Start is called before the first frame update
     void Start()
     {
-        
         rb = gameObject.GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
@@ -25,27 +30,74 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayerControl() {
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
-        if (Input.GetKeyDown("space") && !isJumping) {
+        if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && !isJumping) {
             GetComponent<Rigidbody2D>().velocity = new Vector3(0, characterJumpSpeed, 0);
             isJumping = true;
         }
         if (Input.GetKey("a")) {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            Vector3 pos = transform.position;
-            pos.x -= characterSpeed * Time.smoothDeltaTime;
-            transform.position = pos;
-            
+            direction = true;
+            StartCoroutine(RampUp(direction));
         }
         if (Input.GetKey("d")) {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            Vector3 pos = transform.position;
-            pos.x += characterSpeed * Time.smoothDeltaTime;
-            transform.position = pos;
+            direction = false;
+            StartCoroutine(RampUp(direction));
+        }
+
+        if (!Input.GetKey("a") && !Input.GetKey("d"))
+        {
+            if(isMoving || moveEnd > 0)
+            {
+                StartCoroutine(RampDown(direction));
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("OneWayPlatform")) {
             isJumping = false;
         }
+    }
+
+    IEnumerator RampUp(bool left)
+    {
+        if(!isMoving)
+        {
+            isMoving = true;
+            moveStart = Time.time;
+        }
+        float percentage;
+        
+        if(Time.time - moveStart < rampUpTime) percentage = (Time.time - moveStart) / rampUpTime;
+        else percentage = 1;
+
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        Vector3 pos = transform.position;
+
+        if (left) pos.x -= characterSpeed * Time.smoothDeltaTime * percentage;
+        else pos.x += characterSpeed * Time.smoothDeltaTime * percentage;
+        
+        transform.position = pos;
+        yield return null;
+    }
+
+    IEnumerator RampDown(bool direction)
+    {
+        if(isMoving)
+        {
+            isMoving = false;
+            moveEnd = Time.time;
+        }
+        float percentage;
+
+        if(Time.time - moveEnd < rampDownTime) percentage = 1 - (Time.time - moveEnd) / rampDownTime;
+        else percentage = 0;
+        
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        Vector3 pos = transform.position;
+
+        if (direction) pos.x -= characterSpeed * Time.smoothDeltaTime * percentage;
+        else pos.x += characterSpeed * Time.smoothDeltaTime * percentage;
+
+        transform.position = pos;
+        yield return null;
     }
 }

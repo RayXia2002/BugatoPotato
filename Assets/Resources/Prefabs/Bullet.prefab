@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 250
-  timeElasped: 0.5
+  timeElasped: 0
   dieEffect: {fileID: 7558981753747330517, guid: 2fc2b86ee12e9cf469932a1dcc6b1eeb, type: 3}
   knockback: 2
   branch: {fileID: 0}

@@ -10,29 +10,49 @@ public class Shoot : MonoBehaviour
 
     public float shootTimer;
     private bool isShooting;
+
+    public float maxMeterValue;
+    public float refillTimer;
+    private float meterValue;
+    private bool refilling;
+
+    public PoisonMeter poisonMeter;
     // Start is called before the first frame update
     void Start()
     {
+        poisonMeter.SetMaxMeter(maxMeterValue);
         isShooting = false;
+        refilling = false;
+        meterValue = maxMeterValue;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButton("Fire1") && !isShooting) 
+        if(Input.GetButton("Fire1") && !isShooting && meterValue > 0) 
         {
             StartCoroutine(ShootB());
+        }
+        else if (meterValue < maxMeterValue && !refilling)
+        {
+            StartCoroutine(Refill());
         }
     }
 
     IEnumerator ShootB()
     {
         isShooting = true;
-        //animator.SetBool("isClicked", true);
-        //SpawnShot();
+        poisonMeter.SetMeter(--meterValue);
         GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation);
         yield return new WaitForSeconds(shootTimer);
-        //animator.SetBool("isClicked", false);
         isShooting = false;
+    }
+
+    IEnumerator Refill()
+    {
+        refilling = true;
+        poisonMeter.SetMeter(++meterValue);
+        yield return new WaitForSeconds(refillTimer);
+        refilling = false;
     }
 }

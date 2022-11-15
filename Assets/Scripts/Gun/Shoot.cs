@@ -15,6 +15,7 @@ public class Shoot : MonoBehaviour
     public float refillTimer;
     private float meterValue;
     private bool refilling;
+    private float currentVelocity = 0;
 
     public PoisonMeter poisonMeter;
     // Start is called before the first frame update
@@ -37,12 +38,15 @@ public class Shoot : MonoBehaviour
         {
             StartCoroutine(Refill());
         }
+        float currentMeterValue = Mathf.SmoothDamp(poisonMeter.slider.value , meterValue , ref currentVelocity, 75 * Time.smoothDeltaTime);
+        poisonMeter.slider.value = currentMeterValue;
     }
 
     IEnumerator ShootB()
     {
         isShooting = true;
-        poisonMeter.SetMeter(--meterValue);
+        --meterValue;
+        //poisonMeter.SetMeter(--meterValue);
         GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation);
         yield return new WaitForSeconds(shootTimer);
         isShooting = false;
@@ -51,7 +55,8 @@ public class Shoot : MonoBehaviour
     IEnumerator Refill()
     {
         refilling = true;
-        poisonMeter.SetMeter(++meterValue);
+        //poisonMeter.SetMeter(++meterValue);
+        ++meterValue;
         yield return new WaitForSeconds(refillTimer);
         refilling = false;
     }

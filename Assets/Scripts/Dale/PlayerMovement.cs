@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public float rampUpTime;
     public float rampDownTime;
     private bool direction;
+
+    private float percentLeft;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         else pos.x += characterSpeed * Time.smoothDeltaTime * percentage;
         
         transform.position = pos;
+        percentLeft = percentage;
         yield return null;
     }
 
@@ -88,6 +91,11 @@ public class PlayerMovement : MonoBehaviour
         }
         float percentage;
 
+        if (percentLeft > 0)
+        {
+            percentage = percentLeft;
+        }
+
         if(Time.time - moveEnd < rampDownTime) percentage = 1 - (Time.time - moveEnd) / rampDownTime;
         else percentage = 0;
         
@@ -98,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
         else pos.x += characterSpeed * Time.smoothDeltaTime * percentage;
 
         transform.position = pos;
+        percentLeft = percentage;
         yield return null;
     }
 }

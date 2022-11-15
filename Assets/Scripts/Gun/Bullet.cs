@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody2D rb;
     public GameObject branch;
+    public float percentX;
 
     void Start()
     {
@@ -24,7 +25,6 @@ public class Bullet : MonoBehaviour
         rb.AddForce(transform.right * speed);
         PushBack();
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-        
     }
 
     // Update is called once per frame
@@ -44,21 +44,17 @@ public class Bullet : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        
     }
+
+    void OnBecameInvisible() {
+         Destroy(gameObject);
+     }
 
     void PushBack()
     {
         Vector3 direction = gameObject.transform.right;
-        Vector2 push = new Vector2(Mathf.Abs(direction.x), direction.y);
+        Vector2 push = new Vector2(direction.x, direction.y);
 
-        float x = Mathf.Cos(push.x);
-        float y = Mathf.Sin(push.y);
-
-        if (push.x < .5) x = 0;
-        if (push.y < .5 && push.y > -.5) y = 0;
-
-        if(direction.x > 0) x = -x;
-        player.GetComponent<Rigidbody2D>().AddForce(new Vector2(x * knockback, -y * knockback), ForceMode2D.Impulse);
+        player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-push.x * knockback * percentX, -push.y * knockback), ForceMode2D.Impulse);
     }
 }

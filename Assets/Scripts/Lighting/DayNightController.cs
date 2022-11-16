@@ -15,7 +15,7 @@ public class DayNightController : MonoBehaviour
     public DayNightInterface[] lights;
     public bool day;
     public float lengthOfCycle = 0.015f;
-    public float numOfDays = 1;
+    public int numOfDays = 1;
 
     void Start()
     {
@@ -62,5 +62,10 @@ public class DayNightController : MonoBehaviour
     private void GetSetters()
     {
         lights = GetComponentsInChildren<DayNightInterface>();
+    }
+
+    public int getDays()
+    {
+        return numOfDays;
     }
 }

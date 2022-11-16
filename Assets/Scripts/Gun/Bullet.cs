@@ -47,6 +47,11 @@ public class Bullet : MonoBehaviour
         
     }
 
+    void OnBecameInvisible() 
+    {
+        Destroy(gameObject);
+    }
+
     void PushBack()
     {
         Vector3 direction = gameObject.transform.right;
@@ -55,7 +60,7 @@ public class Bullet : MonoBehaviour
         float x = Mathf.Cos(push.x);
         float y = Mathf.Sin(push.y);
 
-        if (push.x < .5) x = 0;
+        //if (push.x < .5) x = 0;
         if (push.y < .5 && push.y > -.5) y = 0;
 
         if(direction.x > 0) x = -x;

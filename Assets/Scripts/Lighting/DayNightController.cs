@@ -62,6 +62,5 @@ public class DayNightController : MonoBehaviour
     private void GetSetters()
     {
         lights = GetComponentsInChildren<DayNightInterface>();
-
     }
 }

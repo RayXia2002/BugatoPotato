@@ -162,3 +162,4 @@ MonoBehaviour:
   dieEffect: {fileID: 7558981753747330517, guid: 2fc2b86ee12e9cf469932a1dcc6b1eeb, type: 3}
   knockback: 2
   branch: {fileID: 0}
+  percentX: 0.75

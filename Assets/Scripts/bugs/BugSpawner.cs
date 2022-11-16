@@ -12,6 +12,7 @@ public class BugSpawner : MonoBehaviour
     // values for spawning rate
     public float spawnRate = 3f;
     private float lastSpawn = 0f;
+    public bool spawn = false;
 
     // min max for spawning
     private const float X_MIN = -3.6f;
@@ -33,16 +34,18 @@ public class BugSpawner : MonoBehaviour
     private void spawnRand()
     {
         // spawn one of three different bugs chosen randomly
-        int bugNum = Random.Range(0, 3);
-        if (bugNum == 0){
-            // spawn beetle
-            spawnBeetle();
-        } else if (bugNum == 1) {
-            // spawn caterpillar
-            spawnCater();
-        } else {
-            // spawn flying beetle
-            spawnFly();
+        if(spawn == true){
+            int bugNum = Random.Range(0, 3);
+            if (bugNum == 0){
+                // spawn beetle
+                spawnBeetle();
+            } else if (bugNum == 1) {
+                // spawn caterpillar
+                spawnCater();
+            } else {
+                // spawn flying beetle
+                spawnFly();
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public interface DayNightInterface
@@ -9,18 +10,25 @@ public interface DayNightInterface
 
 public class DayNightController : MonoBehaviour
 {
+    
     public DayStatus dayStatus;
     //[Range(0,1)]
     public float time;
     public DayNightInterface[] lights;
     public bool day;
+    public bool dayIdle;
+    public bool nightTime;
     public float lengthOfCycle = 0.015f;
     public int numOfDays = 1;
+
+
 
     void Start()
     {
         time = 0;
         day = true;
+        dayIdle = true;
+        nightTime = false;
         dayStatus.SetDay(numOfDays);
         GetSetters();
 
@@ -46,15 +54,21 @@ public class DayNightController : MonoBehaviour
             day = true;
         }
         
-        if (day)
+        if (day && !dayIdle)
         {
             time = Mathf.Lerp(time, 1.1f, Time.smoothDeltaTime * lengthOfCycle);
         }
-        else if (!day)
+        else if (!day && nightTime == true)
         {
-            time = 0f;
-            ++numOfDays;
-            dayStatus.SetDay(numOfDays);
+            time = Mathf.Lerp(time, 1.1f, Time.smoothDeltaTime * 1f);
+            if (time >= 1f)
+            {
+                ++numOfDays;
+                day = true;
+                dayIdle = true;
+                time = 0f;
+                dayStatus.SetDay(numOfDays);
+            }
         }
 
     }
@@ -68,4 +82,5 @@ public class DayNightController : MonoBehaviour
     {
         return numOfDays;
     }
+
 }

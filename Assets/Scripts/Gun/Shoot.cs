@@ -16,6 +16,7 @@ public class Shoot : MonoBehaviour
     private float meterValue;
     private bool refilling;
     private float currentVelocity = 0;
+    public bool canFire = true;
 
     public PoisonMeter poisonMeter;
     // Start is called before the first frame update
@@ -30,7 +31,7 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButton("Fire1") && !isShooting && meterValue > 0) 
+        if(Input.GetButton("Fire1") && !isShooting && meterValue > 0 && canFire) 
         {
             StartCoroutine(ShootB());
         }
@@ -62,10 +63,10 @@ public class Shoot : MonoBehaviour
     }
 
     public void UpgradeFireRate(float val) {
-        shootTimer += val;
+        shootTimer -= val;
     }
 
     public void UpgradeRefillTimer(float val) {
-        shootTimer += val;
+        refillTimer -= val;
     }
 }

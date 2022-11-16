@@ -29,7 +29,7 @@ public class PlayerOneWayPlatform : MonoBehaviour
     }
     private IEnumerator DisableCollision() {
         yield return new WaitForSeconds(0.3f);
-        platform.surfaceArc = 90f;
+        platform.surfaceArc = 180f;
 
     }
 }

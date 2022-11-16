@@ -15,11 +15,10 @@ public class BugSpawner : MonoBehaviour
     public bool spawn = false;
 
     // min max for spawning
-    private const float X_MIN = -3.6f;
-    private const float X_MAX = 3.6f;
+    private const float X_MIN = -4.7f;
+    private const float X_MAX = 4.7f;
     private const float BEET_Y_VAL = -1.6f;
     private const float CAT_Y_VAL = -1.67f;
-    //private const float FLY_Y_VAL = -0.2f;
 
 
     // Update is called once per frame

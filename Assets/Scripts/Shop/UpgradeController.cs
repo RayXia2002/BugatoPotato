@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class UpgradeController : MonoBehaviour
 {
-    private PlayerMovement playerMovement;
-    private Bullet bullet;
-    private Shoot shoot;
+    public PlayerMovement playerMovement;
+    public Bullet bullet;
+    public Shoot shoot;
     void Start()
     {
-        playerMovement = GetComponent<PlayerMovement>();
-        bullet = GetComponent<Bullet>();
-        shoot = GetComponent<Shoot>();
+        //playerMovement = GetComponent<PlayerMovement>();
+        //bullet = GetComponent<Bullet>();
+        //shoot = GetComponent<Shoot>();
     }
 
     public void UpgradePlayerSpeed() {
@@ -21,10 +21,11 @@ public class UpgradeController : MonoBehaviour
         bullet.UpgradeBulletSpeed(50.0f);
     }
     public void UpgradeFireRate() {
-        shoot.UpgradeFireRate(-0.05f);
+        shoot.UpgradeFireRate(0.05f);
     }
 
     public void UpgradeRefillTimer() {
-        shoot.UpgradeRefillTimer(-0.1f);
+        shoot.UpgradeRefillTimer(0.1f);
     }
+
 }

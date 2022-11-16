@@ -8,11 +8,11 @@ public class Shoot : MonoBehaviour
     public GameObject bullet;
     public GameObject bulletLoc;
 
-    public float shootTimer;
+    public float shootTimer = 0.3f;
     private bool isShooting;
 
     public float maxMeterValue;
-    public float refillTimer;
+    public float refillTimer = 0.5f;
     private float meterValue;
     private bool refilling;
     private float currentVelocity = 0;
@@ -59,5 +59,13 @@ public class Shoot : MonoBehaviour
         ++meterValue;
         yield return new WaitForSeconds(refillTimer);
         refilling = false;
+    }
+
+    public void UpgradeFireRate(float val) {
+        shootTimer += val;
+    }
+
+    public void UpgradeRefillTimer(float val) {
+        shootTimer += val;
     }
 }

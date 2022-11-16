@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float characterSpeed = 5f;
+    public float characterSpeed = 1f;
     public float characterJumpSpeed = 5f;
     private bool isJumping = false;
     private Rigidbody2D rb;
@@ -108,5 +108,9 @@ public class PlayerMovement : MonoBehaviour
         transform.position = pos;
         percentLeft = percentage;
         yield return null;
+    }
+
+    public void UpgradePlayerSpeed(float val) {
+        characterSpeed += val;
     }
 }

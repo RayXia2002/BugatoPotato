@@ -949,7 +949,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 90
+  m_SurfaceArc: 135
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -1246,7 +1246,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 90
+  m_SurfaceArc: 135
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -2338,7 +2338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterSpeed: 1
-  characterJumpSpeed: 10
+  characterJumpSpeed: 12
   animator: {fileID: 393066220}
   rampUpTime: 0.2
   rampDownTime: 0.12
@@ -2978,7 +2978,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 90
+  m_SurfaceArc: 135
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -4533,7 +4533,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 90
+  m_SurfaceArc: 135
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -5295,7 +5295,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 90
+  m_SurfaceArc: 135
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -6839,7 +6839,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 90
+  m_SurfaceArc: 135
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1

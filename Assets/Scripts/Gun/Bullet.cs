@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed;
+    public float speed = 250.0f;
     public float timeElasped;
     private float timeStart;
 
     public GameObject dieEffect;
     private GameObject player;
 
-    public float knockback;
+    public float knockback = 2.0f;
 
     private Rigidbody2D rb;
     public GameObject branch;
@@ -56,5 +56,9 @@ public class Bullet : MonoBehaviour
         Vector2 push = new Vector2(direction.x, direction.y);
 
         player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-push.x * knockback * percentX, -push.y * knockback), ForceMode2D.Impulse);
+    }
+
+    public void UpgradeBulletSpeed(float val) {
+        speed += val;
     }
 }

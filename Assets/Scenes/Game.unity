@@ -1747,7 +1747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c6b4c0acb7681448e0c25a70bc8608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterSpeed: 1
+  characterSpeed: 3
   characterJumpSpeed: 10
   animator: {fileID: 393066220}
   rampUpTime: 0.2
@@ -2139,9 +2139,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6695395829826346703, guid: ba166f779fa9d254496e2b001def6a5e, type: 3}
   bulletLoc: {fileID: 3917820179983459976}
-  shootTimer: 0.1
+  shootTimer: 0.3
   maxMeterValue: 10
-  refillTimer: 0.25
+  refillTimer: 0.5
   poisonMeter: {fileID: 920085697}
 --- !u!1 &485556720
 GameObject:

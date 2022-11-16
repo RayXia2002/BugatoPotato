@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public float speed;
     public float timeElasped;
     private float timeStart;
+    public float atkDmg;
 
     public GameObject dieEffect;
     private GameObject player;
@@ -38,12 +39,19 @@ public class Bullet : MonoBehaviour
 
         if (tag == "Ground" || tag == "bug")
         {
+            if (tag == "bug")
+            {
+                IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+                damageable.OnHit(atkDmg);
+            }
             if (dieEffect != null)
             {
                 Instantiate(dieEffect, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
         }
+
+
     }
 
     void OnBecameInvisible() 

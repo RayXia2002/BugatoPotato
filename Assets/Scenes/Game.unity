@@ -2396,9 +2396,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6695395829826346703, guid: ba166f779fa9d254496e2b001def6a5e, type: 3}
   bulletLoc: {fileID: 3917820179983459976}
-  shootTimer: 0.01
+  shootTimer: 0.3
   maxMeterValue: 10
-  refillTimer: 0.01
+  refillTimer: 0.5
   poisonMeter: {fileID: 920085697}
 --- !u!1 &485556720
 GameObject:

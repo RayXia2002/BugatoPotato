@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     void PlayerControl() {
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
         if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && !isJumping) {
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0, characterJumpSpeed, 0);
+            rb.velocity = new Vector3(rb.velocity.x, characterJumpSpeed, 0);
             isJumping = true;
         }
         if (Input.GetKey("a")) {
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         if(Time.time - moveStart < rampUpTime) percentage = (Time.time - moveStart) / rampUpTime;
         else percentage = 1;
 
-        rb.velocity = new Vector2(0, rb.velocity.y);
+        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
         Vector3 pos = transform.position;
 
         if (left) pos.x -= characterSpeed * Time.smoothDeltaTime * percentage;
@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
         if(Time.time - moveEnd < rampDownTime) percentage = 1 - (Time.time - moveEnd) / rampDownTime;
         else percentage = 0;
         
-        rb.velocity = new Vector2(0, rb.velocity.y);
+        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
         Vector3 pos = transform.position;
 
         if (direction) pos.x -= characterSpeed * Time.smoothDeltaTime * percentage;

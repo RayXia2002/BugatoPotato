@@ -46,9 +46,10 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void OnBecameInvisible() {
-         Destroy(gameObject);
-     }
+    void OnBecameInvisible() 
+    {
+        Destroy(gameObject);
+    }
 
     void PushBack()
     {

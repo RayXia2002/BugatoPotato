@@ -2845,7 +2845,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89e6259070b5b97449371138f7ab071a, type: 3}
+  m_Sprite: {fileID: -1165989112, guid: e9c527ec74412274587c17aeb78c3a1b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3443,7 +3443,8 @@ MonoBehaviour:
   bulletLoc: {fileID: 3917820179983459976}
   shootTimer: 0.3
   maxMeterValue: 10
-  refillTimer: 0.5
+  refillTimer: 0.75
+  meterValue: 0
   canFire: 1
   poisonMeter: {fileID: 920085697}
 --- !u!1 &470865506
@@ -7994,7 +7995,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91ebb3ee2104460438ed5daf8dd1dc29, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3fe8f2e18dc93c4e894c7bc0f312c8e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15672,6 +15673,9 @@ MonoBehaviour:
   pb: {fileID: 393066216}
   shoot: {fileID: 450373400}
   plantBehavior: {fileID: 764045009}
+  caterBehavior: {fileID: 6825136113292356413, guid: af5bfaaf1aa3d1144954dc9a4040e8e7, type: 3}
+  beetleBehavior: {fileID: 3458852921978807187, guid: d9a81903458a5794ebb6cc0d6eae63c7, type: 3}
+  flyBehavior: {fileID: 42466342546328049, guid: fd5c2532fe6d468409810ff5c18df988, type: 3}
   startDayButton: {fileID: 295757117}
   dale: {fileID: 393066211}
   bulletSpawner: {fileID: 5141650804358575351}
@@ -16054,7 +16058,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d1d0b9498fb55ff40af12badf4046518, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca5a39bc24c01e24c8ffb7a85f924070, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

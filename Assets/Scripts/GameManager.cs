@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public PlayerBehavior pb;
     public Shoot shoot;
     public PlantBehavior plantBehavior;
+    public CaterBehave caterBehavior;
+    public BeetleBehave beetleBehavior;
+    public FlyBehave flyBehavior;
     public Button startDayButton;
     public GameObject dale;
     public GameObject bulletSpawner;
@@ -29,11 +32,22 @@ public class GameManager : MonoBehaviour
         CountBugs();
         if (firstDay == true)
         {
-            StartDay();
+            StartFirstDay();
+            dnc.lengthOfCycle = 0.03f;
             firstDay = false;
         }
         if (dnc.dayIdle == true && !firstDay && !setUp)
         {
+            if (dnc.numOfDays <= 11){
+                bs.spawnRate -= (0.03f * dnc.numOfDays);
+                flyBehavior.speed += (0.009f * dnc.numOfDays);
+                caterBehavior.speed += (0.009f * dnc.numOfDays);
+                beetleBehavior.speed += (0.009f * dnc.numOfDays);   
+            }
+            shoot.meterValue = shoot.maxMeterValue;
+            pb.healthHearts.SetHearts(6, 3);
+            plantBehavior.health = 100f;
+            dnc.lengthOfCycle = 0.015f;
             sc.potatoes += 5;
             dnc.nightTime = false;
             bs.spawn = false;
@@ -61,6 +75,18 @@ public class GameManager : MonoBehaviour
 
     public void StartDay()
     {
+        dnc.dayIdle = false;
+        sc.CloseShop();
+        dale.SetActive(true);
+        shoot.canFire = true;
+        bs.spawn = true;
+    }
+
+    public void StartFirstDay()
+    {
+        flyBehavior.speed = 0.75f;
+        beetleBehavior.speed = 0.4f;
+        caterBehavior.speed = 0.2f;
         dnc.dayIdle = false;
         sc.CloseShop();
         dale.SetActive(true);

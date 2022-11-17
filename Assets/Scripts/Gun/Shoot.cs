@@ -13,7 +13,7 @@ public class Shoot : MonoBehaviour
 
     public float maxMeterValue;
     public float refillTimer = 0.5f;
-    private float meterValue;
+    public float meterValue;
     private bool refilling;
     private float currentVelocity = 0;
     public bool canFire = true;

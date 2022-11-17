@@ -21,7 +21,7 @@ public class UpgradeController : MonoBehaviour
         bullet.UpgradeBulletSpeed(50.0f);
     }
     public void UpgradeFireRate() {
-        shoot.UpgradeFireRate(0.05f);
+        shoot.UpgradeFireRate(0.01f);
     }
 
     public void UpgradeRefillTimer() {

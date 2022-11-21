@@ -1082,6 +1082,7 @@ GameObject:
   - component: {fileID: 99704503}
   - component: {fileID: 99704502}
   - component: {fileID: 99704501}
+  - component: {fileID: 99704504}
   m_Layer: 0
   m_Name: branches 1_0
   m_TagString: OneWayPlatform
@@ -1229,6 +1230,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &99704504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99704499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 0}
 --- !u!1 &110213303
 GameObject:
   m_ObjectHideFlags: 0
@@ -4571,6 +4586,7 @@ GameObject:
   - component: {fileID: 567666489}
   - component: {fileID: 567666492}
   - component: {fileID: 567666491}
+  - component: {fileID: 567666493}
   m_Layer: 0
   m_Name: branches 1_0
   m_TagString: OneWayPlatform
@@ -4718,6 +4734,20 @@ PolygonCollider2D:
       - {x: 0.27926382, y: 0.049912088}
       - {x: 0.24984685, y: 0.060007926}
       - {x: 0.18978873, y: 0.07}
+--- !u!114 &567666493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567666488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 0}
 --- !u!1 &583156991
 GameObject:
   m_ObjectHideFlags: 0
@@ -11017,6 +11047,7 @@ GameObject:
   - component: {fileID: 1330785132}
   - component: {fileID: 1330785135}
   - component: {fileID: 1330785134}
+  - component: {fileID: 1330785136}
   m_Layer: 0
   m_Name: branches 1_2
   m_TagString: OneWayPlatform
@@ -11177,6 +11208,20 @@ PolygonCollider2D:
       - {x: 0.39501, y: -0.040032998}
       - {x: 0.41508487, y: -0.050191656}
       - {x: 0.435, y: -0.060011037}
+--- !u!114 &1330785136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330785131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 0}
 --- !u!1 &1334419317
 GameObject:
   m_ObjectHideFlags: 0
@@ -11641,7 +11686,7 @@ PrefabInstance:
       objectReference: {fileID: 393066211}
     - target: {fileID: -2496868164933968995, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: speed
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -2496868164933968995, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: bullet
@@ -11657,7 +11702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1794215234255911274, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1794215234255911274, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: m_TagString
@@ -11973,6 +12018,7 @@ GameObject:
   - component: {fileID: 1420977111}
   - component: {fileID: 1420977114}
   - component: {fileID: 1420977113}
+  - component: {fileID: 1420977115}
   m_Layer: 0
   m_Name: branches 1_3
   m_TagString: OneWayPlatform
@@ -12143,6 +12189,20 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &1420977115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420977110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 0}
 --- !u!1 &1421347047
 GameObject:
   m_ObjectHideFlags: 0
@@ -16974,6 +17034,7 @@ GameObject:
   - component: {fileID: 1883540550}
   - component: {fileID: 1883540553}
   - component: {fileID: 1883540552}
+  - component: {fileID: 1883540554}
   m_Layer: 0
   m_Name: branches 1_4
   m_TagString: OneWayPlatform
@@ -17131,6 +17192,20 @@ PolygonCollider2D:
       - {x: 0.73500144, y: -0.010174453}
       - {x: 0.75533646, y: -0.0096635}
       - {x: 0.765, y: 0.010087581}
+--- !u!114 &1883540554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883540549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 0}
 --- !u!1 &1896410611
 GameObject:
   m_ObjectHideFlags: 0
@@ -17724,6 +17799,7 @@ GameObject:
   - component: {fileID: 1973910382}
   - component: {fileID: 1973910385}
   - component: {fileID: 1973910384}
+  - component: {fileID: 1973910386}
   m_Layer: 0
   m_Name: branches 1_1
   m_TagString: OneWayPlatform
@@ -17876,6 +17952,20 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &1973910386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973910381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1702e85134276f7409cba9d26e3b0918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coll: 0
+  platform: {fileID: 0}
 --- !u!1 &1983632759
 GameObject:
   m_ObjectHideFlags: 0

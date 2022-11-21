@@ -31,7 +31,7 @@ public class HornetBehavior : MonoBehaviour
     void Update()
     {
         if (moving) {
-            Vector3 direction = (dale.transform.position - this.transform.position);
+            Vector3 direction = (dale.transform.position - this.transform.position).normalized;
             this.transform.position += direction * speed * Time.smoothDeltaTime;
         }
         // // should attack if in attack mode, touching the plant, and it is time for attack. 

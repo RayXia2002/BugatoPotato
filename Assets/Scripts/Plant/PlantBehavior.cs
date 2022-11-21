@@ -46,7 +46,6 @@ public class PlantBehavior : MonoBehaviour, IDamageable
         }
         if (day == PlantStage.StageTwo)
         {
-            GameManager.Instance.extraPotatoes += 3f;
             healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
             healthBar.SetHealth(health);
             stageOne.SetActive(false);
@@ -54,7 +53,6 @@ public class PlantBehavior : MonoBehaviour, IDamageable
         }
         if (day == PlantStage.StageThree)
         {
-            GameManager.Instance.extraPotatoes += 3f;
             healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
             healthBar.SetHealth(health);
             stageTwo.SetActive(false);
@@ -62,7 +60,6 @@ public class PlantBehavior : MonoBehaviour, IDamageable
         }
         if (day == PlantStage.StageFour)
         {
-            GameManager.Instance.extraPotatoes += 3f;
             healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
             healthBar.SetHealth(health);
             stageThree.SetActive(false);
@@ -70,7 +67,6 @@ public class PlantBehavior : MonoBehaviour, IDamageable
         }
         if (day == PlantStage.StageFive)
         {
-            GameManager.Instance.extraPotatoes += 3f;
             healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
             healthBar.SetHealth(health);
             stageFour.SetActive(false);

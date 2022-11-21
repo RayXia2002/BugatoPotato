@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     public float playerHealth { get; set; }
     public int playerMaxHealth { get; set; }
     public bool plantChange { get; set;}
-    public float extraPotatoes { get; set; }
     public DayNightController dnc;
     public ShopController sc;
     public TutorialController tc;
@@ -77,7 +76,7 @@ public class GameManager : MonoBehaviour
             pb.healthHearts.SetHearts(6, 3);
             pb.health = 6;
             dnc.lengthOfCycle = 0.015f;
-            sc.potatoes += extraPotatoes;
+            sc.potatoes += 5;
             dnc.nightTime = false;
             bs.spawn = false;
             sc.OpenShop();
@@ -130,7 +129,7 @@ public class GameManager : MonoBehaviour
         beetleBehavior.speed = 0.4f;
         caterBehavior.speed = 1.5f;
         
-        extraPotatoes += 3f;
+        shoot.canFire = true;
         dnc.dayIdle = false;
         sc.CloseShop();
         shoot.canFire = true;

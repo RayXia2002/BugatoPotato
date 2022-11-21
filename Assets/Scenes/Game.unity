@@ -17080,6 +17080,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: plant stalk 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1105060950351691985, guid: 0d1e311f22466004d82fce03727ee399, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105060950351691985, guid: 0d1e311f22466004d82fce03727ee399, type: 3}
+      propertyPath: m_TagString
+      value: stem
+      objectReference: {fileID: 0}
     - target: {fileID: 1105060950351691987, guid: 0d1e311f22466004d82fce03727ee399, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -17233,6 +17241,14 @@ PrefabInstance:
     - target: {fileID: 2935046493774580801, guid: b05f00bcd878b3e459f2de191e21b1f5, type: 3}
       propertyPath: m_Name
       value: plant stalk 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935046493774580801, guid: b05f00bcd878b3e459f2de191e21b1f5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935046493774580801, guid: b05f00bcd878b3e459f2de191e21b1f5, type: 3}
+      propertyPath: m_TagString
+      value: stem
       objectReference: {fileID: 0}
     - target: {fileID: 2935046493774580803, guid: b05f00bcd878b3e459f2de191e21b1f5, type: 3}
       propertyPath: m_RootOrder
@@ -17551,6 +17567,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: plant stalk 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5879097277941157997, guid: b81ae7a26ce51a347a39d7fe89f9937a, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5879097277941157997, guid: b81ae7a26ce51a347a39d7fe89f9937a, type: 3}
+      propertyPath: m_TagString
+      value: stem
+      objectReference: {fileID: 0}
     - target: {fileID: 5879097277941157998, guid: b81ae7a26ce51a347a39d7fe89f9937a, type: 3}
       propertyPath: stageOne
       value: 
@@ -17671,6 +17695,14 @@ PrefabInstance:
     - target: {fileID: 6200685091359339090, guid: b80f0952f81642042afde50b2ec79c7e, type: 3}
       propertyPath: m_Name
       value: plant stalk 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200685091359339090, guid: b80f0952f81642042afde50b2ec79c7e, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200685091359339090, guid: b80f0952f81642042afde50b2ec79c7e, type: 3}
+      propertyPath: m_TagString
+      value: stem
       objectReference: {fileID: 0}
     - target: {fileID: 6200685091359339183, guid: b80f0952f81642042afde50b2ec79c7e, type: 3}
       propertyPath: stageOne

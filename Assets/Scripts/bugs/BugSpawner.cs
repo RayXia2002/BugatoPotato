@@ -32,12 +32,7 @@ public class BugSpawner : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //if ((Time.time - lastSpawn >= spawnRate) && !pause) {
-        //    spawnRand();
-        //    lastSpawn = Time.time;
-        //}
-        
+    {        
         if ((Time.time - lastSpawnCater >= spawnRate * spawnCaterRate) && spawn && !pause && GameManager.Instance.day >= 1) 
         {
             spawnCater();
@@ -56,30 +51,12 @@ public class BugSpawner : MonoBehaviour
             lastSpawnFly = Time.time;
         }
 
-        if ((Time.time - lastSpawnHornet >= spawnRate * spawnHornetRate) && spawn && !pause && GameManager.Instance.day >= 1) 
+        if ((Time.time - lastSpawnHornet >= spawnRate * spawnHornetRate) && spawn && !pause && GameManager.Instance.day >= 4) 
         {
             spawnHornet();
             lastSpawnHornet = Time.time;
         }
         
-    }
-
-    private void spawnRand()
-    {
-        // spawn one of three different bugs chosen randomly
-        if(spawn == true){
-            int bugNum = Random.Range(0, 3);
-            if (bugNum == 0){
-                // spawn beetle
-                spawnBeetle();
-            } else if (bugNum == 1) {
-                // spawn caterpillar
-                spawnCater();
-            } else {
-                // spawn flying beetle
-                spawnFly();
-            }
-        }
     }
 
 
@@ -92,10 +69,8 @@ public class BugSpawner : MonoBehaviour
         float xval = direction == 1 ? X_MIN : X_MAX;
 
         // create cater
-        Vector3 pos = new Vector3(xval, CAT_Y_VAL, -1f);
+        Vector3 pos = new Vector3(xval, CAT_Y_VAL, 0f);
         GameObject cater = Instantiate(caterSpawn, pos, Quaternion.identity);
-
-        
 
         if (direction == 1) {
             // face the right if direction is right
@@ -116,7 +91,7 @@ public class BugSpawner : MonoBehaviour
         float xval = direction == 1 ? X_MIN : X_MAX;
 
         // create beetle
-        Vector3 pos = new Vector3(xval, BEET_Y_VAL, -1f);
+        Vector3 pos = new Vector3(xval, BEET_Y_VAL, 0f);
         GameObject beetle = Instantiate(beetleSpawn, pos, Quaternion.identity);
 
         if (direction == 0) {
@@ -133,13 +108,13 @@ public class BugSpawner : MonoBehaviour
     private void spawnFly() {
         // get random direction
         int direction = Random.Range(0, 2);
+
         float height = (Random.Range(0f, 1.5f) - 1f);
         // set xval depending on direction
         float xval = direction == 1 ? X_MIN : X_MAX;
 
         // create flying beetle
-        //Vector3 pos = new Vector3(-3.6f, -0.2f, 0f);
-        Vector3 pos = new Vector3(xval, height, -1f);
+        Vector3 pos = new Vector3(xval, height, 0f);
         GameObject flyBeetle = Instantiate(flySpawn, pos, Quaternion.identity);
 
         if (direction == 0) {
@@ -155,13 +130,12 @@ public class BugSpawner : MonoBehaviour
     private void spawnHornet() {
         // get random direction
         int direction = Random.Range(0, 2);
-        float height = (Random.Range(0f, 1.5f) - 1f);
+        float height = Random.Range(-1f, 2.5f);
         // set xval depending on direction
-        float xval = direction == 1 ? -3f : 3f;
+        float xval = direction == 1 ? X_MIN : X_MAX;
 
-        // create flying beetle
-        //Vector3 pos = new Vector3(-3.6f, -0.2f, 0f);
-        Vector3 pos = new Vector3(xval, height, -1f);
+        // create hornet
+        Vector3 pos = new Vector3(xval, height, 0f);
         GameObject hornet = Instantiate(hornetSpawn, pos, Quaternion.identity);
 
         if (direction == 0) {
@@ -169,8 +143,6 @@ public class BugSpawner : MonoBehaviour
             Vector3 origScale = hornet.transform.localScale;
             origScale.x *= -1;
             hornet.transform.localScale = origScale;
-            // change walking direction
-            hornet.GetComponent<HornetBehavior>().speed = -1 * hornet.GetComponent<HornetBehavior>().speed;
         }
     }
 

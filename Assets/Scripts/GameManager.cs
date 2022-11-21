@@ -7,7 +7,25 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    private static GameManager _instance;
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                _instance =  GameObject.Find("GameManager").GetComponent<GameManager>();
+            }
+            if(_instance == null)
+            {
+                _instance = new GameObject("GameManager").AddComponent<GameManager>();
+            }
+            return _instance;
+        }
+    }
+    public int day { get; set; }
+    public float plantHealth { get; set; }
     public DayNightController dnc;
     public ShopController sc;
     public BugSpawner bs;
@@ -28,6 +46,7 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
+        day = dnc.numOfDays;
         CheckForDeath();
         CountBugs();
         if (firstDay == true)
@@ -65,13 +84,12 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    void Start()
+    void Awake()
     {
-        startDayButton.onClick.AddListener(StartDay);
-        
+        day = 1;
+        plantHealth = 100f;
+        startDayButton.onClick.AddListener(StartDay);        
     }
-
 
     public void StartDay()
     {
@@ -107,10 +125,15 @@ public class GameManager : MonoBehaviour
 
     private void CheckForDeath()
     {
-        if (pb.health <= 0 || plantBehavior.health <= 0)
+        if (pb.health <= 0 || plantHealth <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
+    }
+
+    public void Test()
+    {
+        Debug.Log("is this working");
     }
 }

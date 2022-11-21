@@ -30,21 +30,22 @@ public class PlayerMovement : MonoBehaviour
         PlayerControl();
     }
 
-    void PlayerControl() {
-        animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
+    void PlayerControl() {        
         if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && !isJumping) {
             rb.velocity = new Vector3(rb.velocity.x, characterJumpSpeed, 0);
             isJumping = true;
         }
         if (Input.GetKey("a")) {
+            animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
             direction = true;
             StartCoroutine(RampUp(direction));
         }
         if (Input.GetKey("d")) {
+            animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
             direction = false;
             StartCoroutine(RampUp(direction));
         }
-
+        //
         if (!Input.GetKey("a") && !Input.GetKey("d"))
         {
             if(isMoving || moveEnd > 0)
@@ -94,6 +95,10 @@ public class PlayerMovement : MonoBehaviour
         if (percentLeft > 0)
         {
             percentage = percentLeft;
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0);
         }
 
         if(Time.time - moveEnd < rampDownTime) percentage = 1 - (Time.time - moveEnd) / rampDownTime;

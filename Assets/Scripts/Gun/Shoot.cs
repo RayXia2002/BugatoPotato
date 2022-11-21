@@ -35,7 +35,7 @@ public class Shoot : MonoBehaviour
         {
             StartCoroutine(ShootB());
         }
-        else if (meterValue < maxMeterValue && !refilling)
+        else if (meterValue < maxMeterValue && !refilling && !Input.GetButton("Fire1"))
         {
             StartCoroutine(Refill());
         }

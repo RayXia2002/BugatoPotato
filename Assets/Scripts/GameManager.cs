@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     }
     public int day { get; set; }
     public float plantHealth { get; set; }
+    public float playerHealth { get; set; }
+    public int playerMaxHealth { get; set; }
+    public bool plantChange { get; set;}
     public DayNightController dnc;
     public ShopController sc;
     public TutorialController tc;
@@ -66,9 +69,10 @@ public class GameManager : MonoBehaviour
                 caterBehavior.speed += (0.009f * dnc.numOfDays);
                 beetleBehavior.speed += (0.009f * dnc.numOfDays);   
             }
+            plantChange = true;
             shoot.meterValue = shoot.maxMeterValue;
             pb.healthHearts.SetHearts(6, 3);
-            plantBehavior.health = 100f;
+            pb.health = 6;
             dnc.lengthOfCycle = 0.015f;
             sc.potatoes += 5;
             dnc.nightTime = false;
@@ -101,7 +105,9 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         day = 1;
-        plantHealth = 100f;
+        plantHealth = 15f;
+        playerHealth = 6;
+        playerMaxHealth = 3;
         startDayButton.onClick.AddListener(StartDay);        
     }
 
@@ -118,7 +124,7 @@ public class GameManager : MonoBehaviour
     {
         flyBehavior.speed = 0.75f;
         beetleBehavior.speed = 0.4f;
-        caterBehavior.speed = 0.2f;
+        caterBehavior.speed = 1.5f;
         
         dnc.dayIdle = false;
         sc.CloseShop();
@@ -146,11 +152,6 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-    }
-
-    public void Test()
-    {
-        Debug.Log("is this working");
     }
 
     public void Tutorial()

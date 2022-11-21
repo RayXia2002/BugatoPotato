@@ -83,6 +83,17 @@ public class HornetBehavior : MonoBehaviour, IDamageable
             StartCoroutine(Die());
         }
     }
+    
+    void OnTriggerStay2D(Collider2D other)
+    {
+        // if trigger is dale
+       if (other.gameObject.tag == "Player")
+       {
+            // cause damage to dale
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            damageable.OnHit(playerAtkDmg);
+       }
+    }
 
     //when hit with bullet
     public void OnHit(float damage)

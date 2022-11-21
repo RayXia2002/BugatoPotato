@@ -85,7 +85,7 @@ public class FlyBehave : MonoBehaviour, IDamageable
         StartCoroutine(RedTimer());
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         // if trigger is dale
        if (other.gameObject.tag == "Player")

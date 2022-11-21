@@ -34,14 +34,26 @@ public class BugSpawner : MonoBehaviour
     {
         // spawn one of three different bugs chosen randomly
         if(spawn == true){
-            int bugNum = Random.Range(0, 3);
-            if (bugNum == 0){
+            int bugNum = 0;
+            if (GameManager.Instance.day == 1)
+            {
+                bugNum = Random.Range(0,1);
+            }
+            if (GameManager.Instance.day == 2)
+            {
+                bugNum = Random.Range(0,2);
+            }
+            if (GameManager.Instance.day >= 3)
+            {
+                bugNum = Random.Range(0,3);
+            }
+            if (bugNum == 0 && GameManager.Instance.day >= 1){
                 // spawn beetle
-                spawnBeetle();
-            } else if (bugNum == 1) {
-                // spawn caterpillar
                 spawnCater();
-            } else {
+            } else if (bugNum == 1 && GameManager.Instance.day >= 2) {
+                // spawn caterpillar
+                spawnBeetle();
+            } else if (GameManager.Instance.day >= 3){
                 // spawn flying beetle
                 spawnFly();
             }

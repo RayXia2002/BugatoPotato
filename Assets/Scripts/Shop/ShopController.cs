@@ -92,9 +92,9 @@ public class ShopController : MonoBehaviour
 
     public void CloseShop()
     {
-        //upgradeCard1.SetActive(true);
-        //upgradeCard2.SetActive(true);
-        //upgradeCard3.SetActive(true);
+        upgradeSpeedCard1.transform.GetChild(1).gameObject.SetActive(true);
+        upgradeRefillTimerCard1.transform.GetChild(1).gameObject.SetActive(true);
+        upgradeFireRateCard1.transform.GetChild(1).gameObject.SetActive(true);
         storeUI.SetActive(false);
     }
 

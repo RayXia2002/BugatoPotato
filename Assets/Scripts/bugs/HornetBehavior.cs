@@ -83,7 +83,7 @@ public class HornetBehavior : MonoBehaviour, IDamageable
             StartCoroutine(Die());
         }
     }
-    
+
     void OnTriggerStay2D(Collider2D other)
     {
         // if trigger is dale

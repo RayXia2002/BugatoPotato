@@ -44,7 +44,7 @@ public class BugSpawner : MonoBehaviour
             lastSpawnCater = Time.time;
         }
 
-        if ((Time.time - lastSpawnBeetle >= spawnRate * spawnBeetleRate) && spawn && !pause && GameManager.Instance.day >= 1) 
+        if ((Time.time - lastSpawnBeetle >= spawnRate * spawnBeetleRate) && spawn && !pause && GameManager.Instance.day >= 2) 
         {
             spawnBeetle();
             lastSpawnBeetle = Time.time;
@@ -94,6 +94,8 @@ public class BugSpawner : MonoBehaviour
         // create cater
         Vector3 pos = new Vector3(xval, CAT_Y_VAL, -1f);
         GameObject cater = Instantiate(caterSpawn, pos, Quaternion.identity);
+
+        
 
         if (direction == 1) {
             // face the right if direction is right
@@ -155,7 +157,7 @@ public class BugSpawner : MonoBehaviour
         int direction = Random.Range(0, 2);
         float height = (Random.Range(0f, 1.5f) - 1f);
         // set xval depending on direction
-        float xval = direction == 1 ? X_MIN : X_MAX;
+        float xval = direction == 1 ? -3f : 3f;
 
         // create flying beetle
         //Vector3 pos = new Vector3(-3.6f, -0.2f, 0f);

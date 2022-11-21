@@ -38,25 +38,25 @@ public class BugSpawner : MonoBehaviour
         //    lastSpawn = Time.time;
         //}
         
-        if ((Time.time - lastSpawnCater >= spawnRate * spawnCaterRate) && spawn && !pause && GameManager.Instance.day >= 1) 
+        if ((Time.time - lastSpawnCater >= spawnRate * spawnCaterRate) && spawn && !pause && GameManager.Instance.day >= 2) 
         {
             spawnCater();
             lastSpawnCater = Time.time;
         }
 
-        if ((Time.time - lastSpawnBeetle >= spawnRate * spawnBeetleRate) && spawn && !pause && GameManager.Instance.day >= 1) 
+        if ((Time.time - lastSpawnBeetle >= spawnRate * spawnBeetleRate) && spawn && !pause && GameManager.Instance.day >= 2) 
         {
             spawnBeetle();
             lastSpawnBeetle = Time.time;
         }
 
-        if ((Time.time - lastSpawnFly >= spawnRate * spawnFlyRate) && spawn && !pause && GameManager.Instance.day >= 3) 
+        if ((Time.time - lastSpawnFly >= spawnRate * spawnFlyRate) && spawn && !pause && GameManager.Instance.day >= 1) 
         {
             spawnFly();
             lastSpawnFly = Time.time;
         }
 
-        if ((Time.time - lastSpawnHornet >= spawnRate * spawnHornetRate) && spawn && !pause && GameManager.Instance.day >= 1) 
+        if ((Time.time - lastSpawnHornet >= spawnRate * spawnHornetRate) && spawn && !pause && GameManager.Instance.day >= 3) 
         {
             spawnHornet();
             lastSpawnHornet = Time.time;
@@ -129,15 +129,20 @@ public class BugSpawner : MonoBehaviour
 
     // spawns a flying beetle from random direction, anywhere between y min/max and x min/max
     private void spawnFly() {
+        
+        GameObject plant = GameObject.FindGameObjectWithTag("stem");
+        float plantHeight = plant.GetComponent<SpriteRenderer>().bounds.size.y;
+        float minHeight = plant.transform.position.y + 0.1f - plantHeight / 2;
+        float maxHeight = plant.transform.position.y + plantHeight / 2;
         // get random direction
         int direction = Random.Range(0, 2);
-        float height = (Random.Range(0f, 1.5f) - 1f);
+        float height = (Random.Range(minHeight, maxHeight));
         // set xval depending on direction
         float xval = direction == 1 ? X_MIN : X_MAX;
 
         // create flying beetle
         //Vector3 pos = new Vector3(-3.6f, -0.2f, 0f);
-        Vector3 pos = new Vector3(xval, height, -1f);
+        Vector3 pos = new Vector3(xval, maxHeight, -1f);
         GameObject flyBeetle = Instantiate(flySpawn, pos, Quaternion.identity);
 
         if (direction == 0) {

@@ -603,7 +603,7 @@ PlatformEffector2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6200685089991325949}
   m_Enabled: 1
-  m_UseColliderMask: 1
+  m_UseColliderMask: 0
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coll: 0
-  platform: {fileID: 0}
+  platform: {fileID: 6200685089991325945}
 --- !u!1 &6200685090067536819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,7 +1122,7 @@ PlatformEffector2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6200685091055368002}
   m_Enabled: 1
-  m_UseColliderMask: 1
+  m_UseColliderMask: 0
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1205,7 +1205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coll: 0
-  platform: {fileID: 0}
+  platform: {fileID: 6200685091055368030}
 --- !u!1 &6200685091125163979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,13 +1469,14 @@ GameObject:
   - component: {fileID: 6200685091359339088}
   - component: {fileID: 6200685091359339089}
   - component: {fileID: 6200685091359339183}
+  - component: {fileID: 1195753089}
   m_Layer: 0
   m_Name: plant stalk 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6200685091359339088
 Transform:
   m_ObjectHideFlags: 0
@@ -1565,6 +1566,79 @@ MonoBehaviour:
   stageThree: {fileID: 0}
   stageFour: {fileID: 0}
   stageFive: {fileID: 0}
+--- !u!60 &1195753089
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6200685091359339090}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 2.56}
+    newSize: {x: 0.64, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.110506766, y: -0.43094137}
+      - {x: 0.09979683, y: -0.401224}
+      - {x: 0.10052425, y: -0.3000392}
+      - {x: 0.10963436, y: -0.20009491}
+      - {x: 0.10985421, y: -0.050612807}
+      - {x: 0.110109225, y: 0.20812763}
+      - {x: 0.111286834, y: 0.32008377}
+      - {x: 0.11220913, y: 0.6881822}
+      - {x: 0.10189513, y: 0.8655124}
+      - {x: 0.10052082, y: 1.0106958}
+      - {x: 0.089799084, y: 1.0596789}
+      - {x: 0.08006947, y: 1.0698462}
+      - {x: 0.06995873, y: 1.0811304}
+      - {x: 0.04975773, y: 1.089802}
+      - {x: 0.00992621, y: 1.0902623}
+      - {x: -0.020207766, y: 1.0601114}
+      - {x: -0.030300919, y: 1.0395694}
+      - {x: -0.040422175, y: 0.8801854}
+      - {x: -0.060546976, y: 0.72917664}
+      - {x: -0.07015705, y: 0.62951106}
+      - {x: -0.08078202, y: 0.45}
+      - {x: -0.09125372, y: 0.34036317}
+      - {x: -0.09113155, y: 0.25921938}
+      - {x: -0.08951799, y: 0.079257175}
+      - {x: -0.10020783, y: -0.07895663}
+      - {x: -0.111211225, y: -0.17}
+      - {x: -0.120716654, y: -0.26067147}
+      - {x: -0.12663805, y: -0.5743512}
+      - {x: -0.13068417, y: -0.7105631}
+      - {x: -0.14037398, y: -0.8785236}
+      - {x: -0.15111697, y: -0.9817236}
+      - {x: -0.15940055, y: -1.190779}
+      - {x: -0.16974509, y: -1.2100868}
+      - {x: -0.17962739, y: -1.2300571}
+      - {x: -0.18983282, y: -1.239768}
+      - {x: -0.21006899, y: -1.259897}
+      - {x: -0.2202632, y: -1.2706726}
+      - {x: -0.22010273, y: -1.2799455}
+      - {x: -0.2081943, y: -1.28}
+      - {x: 0.18062015, y: -1.2803323}
+      - {x: 0.18030253, y: -1.2706649}
+      - {x: 0.160046, y: -1.2505635}
+      - {x: 0.14978887, y: -1.2300103}
+      - {x: 0.14003722, y: -1.2203335}
+      - {x: 0.13022643, y: -1.1804705}
+      - {x: 0.11984532, y: -1.0206001}
+      - {x: 0.110587925, y: -0.9597096}
+      - {x: 0.109929465, y: -0.83}
 --- !u!1 &6200685091398767143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,7 +1652,7 @@ GameObject:
   - component: {fileID: 6200685091398767139}
   - component: {fileID: 6200685091398767140}
   - component: {fileID: 6200685091398767141}
-  m_Layer: 13
+  m_Layer: 7
   m_Name: branches 1_0 (1)
   m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
@@ -1752,7 +1826,7 @@ GameObject:
   - component: {fileID: 6200685091602408281}
   - component: {fileID: 6200685091602408282}
   - component: {fileID: 6200685091602408283}
-  m_Layer: 13
+  m_Layer: 7
   m_Name: branches 1_0 (2)
   m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}

@@ -7,50 +7,68 @@ public class PlantBehavior : MonoBehaviour, IDamageable
     public float health { get; set; }
     public HealthBar healthBar;
     public GameObject stageOne, stageTwo, stageThree, stageFour, stageFive;
+   
 
     public void OnHit(float damage)
     {
-        health -= damage;
-        healthBar.SetHealth(health);
+        GameManager.Instance.plantHealth -= damage;
+        healthBar.SetHealth(GameManager.Instance.plantHealth);
+        Debug.Log(GameManager.Instance.plantHealth);
+        Debug.Log(damage);
     }
  
     void Start()
     {
-        
-        health = GameManager.Instance.plantHealth;
-        Debug.Log(health);
-        healthBar.SetMaxHealth(health);
+        healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
     }
 
     void Update()
     {
-        healthBar.SetHealth(health);
-        ChangePlantStage((PlantStage)GameManager.Instance.day);
+        
+        healthBar.SetHealth(GameManager.Instance.plantHealth);
+        if (GameManager.Instance.plantChange)
+        {
+            ChangePlantStage((PlantStage)GameManager.Instance.day);
+            GameManager.Instance.plantChange = false;
+        }
+
     }
 
     public void ChangePlantStage(PlantStage day)
     {
+        GameManager.Instance.plantHealth += 10f;
+        health = GameManager.Instance.plantHealth;
         if (day == PlantStage.StageOne)
         {
+            healthBar.SetMaxHealth(health);
+            healthBar.SetHealth(health);
             stageOne.SetActive(true);
         }
         if (day == PlantStage.StageTwo)
         {
+            healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
+            healthBar.SetHealth(health);
             stageOne.SetActive(false);
             stageTwo.SetActive(true);
         }
         if (day == PlantStage.StageThree)
         {
+            healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
+            healthBar.SetHealth(health);
             stageTwo.SetActive(false);
             stageThree.SetActive(true);
         }
         if (day == PlantStage.StageFour)
         {
+            healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
+            healthBar.SetHealth(health);
             stageThree.SetActive(false);
             stageFour.SetActive(true);
         }
         if (day == PlantStage.StageFive)
         {
+            healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
+            healthBar.SetHealth(health);
             stageFour.SetActive(false);
             stageFive.SetActive(true);
         }
@@ -59,10 +77,10 @@ public class PlantBehavior : MonoBehaviour, IDamageable
     public enum PlantStage
     {
         StageOne = 1,
-        StageTwo = 3,
-        StageThree = 5,
-        StageFour = 7,
-        StageFive = 9
+        StageTwo = 2,
+        StageThree = 3,
+        StageFour = 4,
+        StageFive = 5
     }
 
 }

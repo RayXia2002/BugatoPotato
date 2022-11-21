@@ -30,29 +30,28 @@ public class PlayerMovement : MonoBehaviour
         PlayerControl();
     }
 
-    void PlayerControl() {        
+    void PlayerControl() {
+        animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
         if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && !isJumping) {
             rb.velocity = new Vector3(rb.velocity.x, characterJumpSpeed, 0);
             isJumping = true;
         }
         if (Input.GetKey("a")) {
-            animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
             direction = true;
             StartCoroutine(RampUp(direction));
         }
         if (Input.GetKey("d")) {
-            animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
             direction = false;
             StartCoroutine(RampUp(direction));
         }
-        
+
         if (!Input.GetKey("a") && !Input.GetKey("d"))
         {
             if(isMoving || moveEnd > 0)
             {
                 StartCoroutine(RampDown(direction));
             }
-        }    
+        }
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("OneWayPlatform")) {
@@ -96,10 +95,6 @@ public class PlayerMovement : MonoBehaviour
         {
             percentage = percentLeft;
         }
-        else
-        {
-            animator.SetFloat("Speed", 0);
-        }
 
         if(Time.time - moveEnd < rampDownTime) percentage = 1 - (Time.time - moveEnd) / rampDownTime;
         else percentage = 0;
@@ -118,5 +113,4 @@ public class PlayerMovement : MonoBehaviour
     public void UpgradePlayerSpeed(float val) {
         characterSpeed += val;
     }
-
 }

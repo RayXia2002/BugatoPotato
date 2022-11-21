@@ -15,8 +15,8 @@ public class PlayerBehavior : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     void Start()
     {
-        health = 6;
-        healthHearts.SetHearts(health, maxHearts);
+        health = GameManager.Instance.playerHealth;
+        healthHearts.SetHearts(health, GameManager.Instance.playerMaxHealth);
         rb = gameObject.GetComponent<Rigidbody2D>();    
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;

@@ -33,6 +33,12 @@ public class HornetBehavior : MonoBehaviour, IDamageable
         if (moving) {
             Vector3 direction = (dale.transform.position - this.transform.position).normalized;
             this.transform.position += direction * speed * Time.smoothDeltaTime;
+            if (direction.x < 0) {
+                // face the correct direction
+                Vector3 origScale = transform.localScale;
+                origScale.x *= -1;
+                transform.localScale = origScale;
+            }
         }
 
         // get distance between dale and hornet
@@ -40,7 +46,7 @@ public class HornetBehavior : MonoBehaviour, IDamageable
 
         
         // if close enough, attk is true
-        if (dist <= 2) {
+        if (dist <= 1) {
             attk = true;
         }
 
@@ -63,6 +69,7 @@ public class HornetBehavior : MonoBehaviour, IDamageable
             attk = false;
         }
     }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "bullet" && health <= 0) {

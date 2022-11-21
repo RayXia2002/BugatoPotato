@@ -7,43 +7,53 @@ using TMPro;
 public class TutorialController : MonoBehaviour
 {
 
-    public DayNightController dnc;
-    public Image[] images;
-    public TMP_Text[] texts;
+    public Button skip;
+    //public TextMP skipText;
+
+    public GameObject moveTutu;
+    public GameObject uiTutu;
+
+    public int stage = 0;
+    private static bool display = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        moveTutu.SetActive(true);
+        uiTutu.SetActive(false);
+        skip.onClick.AddListener(NextTutorial);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(dnc.getDays() == 1)
+        if(display)
         {
-            updateImages(true);
-            updateTexts(true);
+            gameObject.SetActive(true);
         }
         else
         {
-            updateImages(false);
-            updateTexts(false);
+            gameObject.SetActive(false);
         }
     }
 
-    void updateImages(bool onOff)
+    void NextTutorial()
     {
-        for (int i = 0; i < 4; i++)
+        if (stage == 0)
         {
-            images[i].enabled = onOff;
+            stage++;
+            moveTutu.SetActive(false);
+            uiTutu.SetActive(true);
+        }
+        else if(stage == 1)
+        {
+            stage++;
+            uiTutu.SetActive(false);        
+            skip.gameObject.SetActive(false);
         }
     }
 
-    void updateTexts(bool onOff)
+    public void DisplayTutorial()
     {
-        for (int i = 0; i < 4; i++)
-        {
-            texts[i].enabled = onOff;
-        }
+        display = !display;
     }
 }

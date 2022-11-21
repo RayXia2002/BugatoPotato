@@ -19,6 +19,7 @@ public class Shoot : MonoBehaviour
     public bool canFire = true;
 
     public PoisonMeter poisonMeter;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +36,7 @@ public class Shoot : MonoBehaviour
         {
             StartCoroutine(ShootB());
         }
-        else if (meterValue < maxMeterValue && !refilling)
+        else if (meterValue < maxMeterValue && !refilling && !Input.GetButton("Fire1"))
         {
             StartCoroutine(Refill());
         }

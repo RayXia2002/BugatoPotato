@@ -16,42 +16,46 @@ public class PlayerMovement : MonoBehaviour
     public float rampUpTime;
     public float rampDownTime;
     private bool direction;
-
     private float percentLeft;
-    // Start is called before the first frame update
+
+    public Transform groundCheck;
+    public float groundCheckRadius;
+    public LayerMask groundLayer;
+    private bool isTouchingGround;
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         PlayerControl();
     }
 
-    void PlayerControl() {
-        animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
-        if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && !isJumping) {
+    void PlayerControl() {  
+        isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);      
+        if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && isTouchingGround) {
             rb.velocity = new Vector3(rb.velocity.x, characterJumpSpeed, 0);
-            isJumping = true;
         }
         if (Input.GetKey("a")) {
+            animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
             direction = true;
             StartCoroutine(RampUp(direction));
         }
         if (Input.GetKey("d")) {
+            animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
             direction = false;
             StartCoroutine(RampUp(direction));
         }
-
+        
         if (!Input.GetKey("a") && !Input.GetKey("d"))
         {
             if(isMoving || moveEnd > 0)
             {
                 StartCoroutine(RampDown(direction));
             }
-        }
+        }    
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("OneWayPlatform")) {
@@ -95,6 +99,10 @@ public class PlayerMovement : MonoBehaviour
         {
             percentage = percentLeft;
         }
+        else
+        {
+            animator.SetFloat("Speed", 0);
+        }
 
         if(Time.time - moveEnd < rampDownTime) percentage = 1 - (Time.time - moveEnd) / rampDownTime;
         else percentage = 0;
@@ -113,4 +121,5 @@ public class PlayerMovement : MonoBehaviour
     public void UpgradePlayerSpeed(float val) {
         characterSpeed += val;
     }
+
 }

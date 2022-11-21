@@ -16,6 +16,7 @@ public class FlyBehave : MonoBehaviour, IDamageable
     public Bullet bullet;
     Collider2D col;
     Collider2D plant;
+    public bool pause = false;
 
     void Start()
     {
@@ -26,21 +27,29 @@ public class FlyBehave : MonoBehaviour, IDamageable
 
     void Update()
     {
-        if (moving) {
-            // update position
-            transform.position += transform.right * Time.smoothDeltaTime * speed;
-        }
+        //if (pause)
+        //{
+            if (moving) {
+                // update position
+                transform.position += transform.right * Time.smoothDeltaTime * speed;
+            }
 
-        // should attack if in attack mode, touching the plant, and it is time for attack
-        bool shouldAttk = attk && (Time.time - lastAtk >= atkSpd);
-        if (shouldAttk && col.IsTouching(plant)) {
-            // update last attack time
-            lastAtk = Time.time;
+            // should attack if in attack mode, touching the plant, and it is time for attack
+            bool shouldAttk = attk && (Time.time - lastAtk >= atkSpd);
+            if (shouldAttk && col.IsTouching(plant)) {
+                // update last attack time
+                lastAtk = Time.time;
 
-            // update plant health
-            IDamageable damageable = plant.GetComponent<IDamageable>();
-            damageable.OnHit(atkDmg);
-        }
+                // update plant health
+                IDamageable damageable = plant.GetComponent<IDamageable>();
+                damageable.OnHit(atkDmg);
+            }
+        //}
+        // gameObject.GetComponent<Animator>().enabled = pause;
+        // if(Input.GetKeyDown("p"))
+        // {
+        //     pause = !pause;
+        // }
     }
 
     void OnCollisionEnter2D(Collision2D other)

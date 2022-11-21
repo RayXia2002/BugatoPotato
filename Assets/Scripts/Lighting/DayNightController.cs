@@ -20,6 +20,7 @@ public class DayNightController : MonoBehaviour
     public bool nightTime;
     public float lengthOfCycle = 0.015f;
     public int numOfDays = 1;
+    public bool pause = false;
 
 
 
@@ -54,7 +55,7 @@ public class DayNightController : MonoBehaviour
             day = true;
         }
         
-        if (day && !dayIdle)
+        if (day && !dayIdle && !pause)
         {
             time = Mathf.Lerp(time, 1.1f, Time.smoothDeltaTime * lengthOfCycle);
         }
@@ -83,4 +84,8 @@ public class DayNightController : MonoBehaviour
         return numOfDays;
     }
 
+    public void setPause(bool isPause)
+    {
+        pause = isPause;
+    }
 }

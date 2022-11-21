@@ -16,24 +16,27 @@ public class PlayerMovement : MonoBehaviour
     public float rampUpTime;
     public float rampDownTime;
     private bool direction;
-
     private float percentLeft;
-    // Start is called before the first frame update
+
+    public Transform groundCheck;
+    public float groundCheckRadius;
+    public LayerMask groundLayer;
+    private bool isTouchingGround;
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         PlayerControl();
     }
 
-    void PlayerControl() {        
-        if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && !isJumping) {
+    void PlayerControl() {  
+        isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);      
+        if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && isTouchingGround) {
             rb.velocity = new Vector3(rb.velocity.x, characterJumpSpeed, 0);
-            isJumping = true;
         }
         if (Input.GetKey("a")) {
             animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));

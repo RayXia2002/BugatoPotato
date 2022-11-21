@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HornetBehavior : MonoBehaviour
+public class HornetBehavior : MonoBehaviour, IDamageable
 {
     public float speed;
     public GameObject dale;

@@ -3296,11 +3296,6 @@ MonoBehaviour:
   animator: {fileID: 393066220}
   rampUpTime: 0.2
   rampDownTime: 0.12
-  groundCheck: {fileID: 428669432}
-  groundCheckRadius: 0.1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8192
 --- !u!1 &401268326
 GameObject:
   m_ObjectHideFlags: 0
@@ -17089,17 +17084,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: plant stalk 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1105060950351691985, guid: 0d1e311f22466004d82fce03727ee399, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1105060950351691987, guid: 0d1e311f22466004d82fce03727ee399, type: 3}
       propertyPath: m_RootOrder
       value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 1105060950351691987, guid: 0d1e311f22466004d82fce03727ee399, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.044
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1105060950351691987, guid: 0d1e311f22466004d82fce03727ee399, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17166,21 +17157,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2614100593163951733, guid: d38e288838cb3624987533bf15348205, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.627
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614100593163951733, guid: d38e288838cb3624987533bf15348205, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.09
-      objectReference: {fileID: 0}
     - target: {fileID: 2614100593679207622, guid: d38e288838cb3624987533bf15348205, type: 3}
       propertyPath: m_Name
       value: plant stalk 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614100593679207622, guid: d38e288838cb3624987533bf15348205, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2614100593679207624, guid: d38e288838cb3624987533bf15348205, type: 3}
       propertyPath: m_RootOrder
@@ -17259,17 +17238,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: plant stalk 3
       objectReference: {fileID: 0}
-    - target: {fileID: 2935046493774580801, guid: b05f00bcd878b3e459f2de191e21b1f5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2935046493774580803, guid: b05f00bcd878b3e459f2de191e21b1f5, type: 3}
       propertyPath: m_RootOrder
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 2935046493774580803, guid: b05f00bcd878b3e459f2de191e21b1f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.061
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2935046493774580803, guid: b05f00bcd878b3e459f2de191e21b1f5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17580,10 +17555,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: plant stalk 5
       objectReference: {fileID: 0}
-    - target: {fileID: 5879097277941157997, guid: b81ae7a26ce51a347a39d7fe89f9937a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5879097277941157998, guid: b81ae7a26ce51a347a39d7fe89f9937a, type: 3}
       propertyPath: stageOne
       value: 
@@ -17610,7 +17581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5879097277941157999, guid: b81ae7a26ce51a347a39d7fe89f9937a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.041
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5879097277941157999, guid: b81ae7a26ce51a347a39d7fe89f9937a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17663,7 +17634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6200685091359339088, guid: b80f0952f81642042afde50b2ec79c7e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.016
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 6200685091359339088, guid: b80f0952f81642042afde50b2ec79c7e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17704,10 +17675,6 @@ PrefabInstance:
     - target: {fileID: 6200685091359339090, guid: b80f0952f81642042afde50b2ec79c7e, type: 3}
       propertyPath: m_Name
       value: plant stalk 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6200685091359339090, guid: b80f0952f81642042afde50b2ec79c7e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6200685091359339183, guid: b80f0952f81642042afde50b2ec79c7e, type: 3}
       propertyPath: stageOne

@@ -19,6 +19,7 @@ public class Shoot : MonoBehaviour
     public bool canFire = true;
 
     public PoisonMeter poisonMeter;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {

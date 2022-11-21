@@ -8,11 +8,13 @@ public class TutorialController : MonoBehaviour
 {
 
     public Button skip;
+    //public TextMP skipText;
 
     public GameObject moveTutu;
     public GameObject uiTutu;
 
-    private int stage = 0;
+    public int stage = 0;
+    private static bool display = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,14 @@ public class TutorialController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(display)
+        {
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void NextTutorial()
@@ -32,8 +41,19 @@ public class TutorialController : MonoBehaviour
         if (stage == 0)
         {
             stage++;
-
+            moveTutu.SetActive(false);
+            uiTutu.SetActive(true);
         }
-        gameObject.SetActive(false);
+        else if(stage == 1)
+        {
+            stage++;
+            uiTutu.SetActive(false);        
+            skip.gameObject.SetActive(false);
+        }
+    }
+
+    public void DisplayTutorial()
+    {
+        display = !display;
     }
 }

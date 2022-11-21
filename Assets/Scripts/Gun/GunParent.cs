@@ -37,4 +37,5 @@ public class GunParent : MonoBehaviour
         transform.localScale = change;
         player.transform.localScale = playerChange;
     }
+        
 }

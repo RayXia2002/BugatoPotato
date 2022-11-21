@@ -13,6 +13,7 @@ public class BugSpawner : MonoBehaviour
     public float spawnRate = 3f;
     private float lastSpawn = 0f;
     public bool spawn = false;
+    public bool pause = false;
 
     // min max for spawning
     private const float X_MIN = -4.7f;
@@ -20,14 +21,14 @@ public class BugSpawner : MonoBehaviour
     private const float BEET_Y_VAL = -1.6f;
     private const float CAT_Y_VAL = -1.67f;
 
-
     // Update is called once per frame
     void Update()
     {
-        if ((Time.time - lastSpawn >= spawnRate)) {
+        if ((Time.time - lastSpawn >= spawnRate) && !pause) {
             spawnRand();
             lastSpawn = Time.time;
         }
+        
     }
 
     private void spawnRand()
@@ -114,5 +115,11 @@ public class BugSpawner : MonoBehaviour
             // change walking direction
             flyBeetle.GetComponent<FlyBehave>().speed = -1 * flyBeetle.GetComponent<FlyBehave>().speed;
         }
+    }
+
+    public void setPause(bool p)
+    {
+        pause = p;
+        lastSpawn = Time.time;
     }
 }

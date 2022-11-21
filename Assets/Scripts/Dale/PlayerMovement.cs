@@ -45,14 +45,14 @@ public class PlayerMovement : MonoBehaviour
             direction = false;
             StartCoroutine(RampUp(direction));
         }
-        //
+        
         if (!Input.GetKey("a") && !Input.GetKey("d"))
         {
             if(isMoving || moveEnd > 0)
             {
                 StartCoroutine(RampDown(direction));
             }
-        }
+        }    
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("OneWayPlatform")) {
@@ -118,4 +118,5 @@ public class PlayerMovement : MonoBehaviour
     public void UpgradePlayerSpeed(float val) {
         characterSpeed += val;
     }
+
 }

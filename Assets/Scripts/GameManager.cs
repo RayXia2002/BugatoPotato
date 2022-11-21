@@ -40,10 +40,12 @@ public class GameManager : MonoBehaviour
     public Button startDayButton;
     public GameObject dale;
     public GameObject bulletSpawner;
+    public GameObject pauseScreen;
     
     public float bugsOnScreen;
     public bool firstDay = true;
     public bool setUp;
+    private bool pause = false;
     
     void Update()
     {
@@ -85,6 +87,16 @@ public class GameManager : MonoBehaviour
                 setUp = false;             
             }
         }
+
+        if (tc.stage >= 2 && dnc.dayIdle)
+        {
+            
+            
+        }
+        // if(Input.GetKeyDown("p"))
+        // {
+        //     PauseGame();
+        // }
     }
     void Awake()
     {
@@ -107,6 +119,7 @@ public class GameManager : MonoBehaviour
         flyBehavior.speed = 0.75f;
         beetleBehavior.speed = 0.4f;
         caterBehavior.speed = 0.2f;
+        
         dnc.dayIdle = false;
         sc.CloseShop();
         dale.SetActive(true);
@@ -138,5 +151,9 @@ public class GameManager : MonoBehaviour
     public void Test()
     {
         Debug.Log("is this working");
+    }
+
+    public void Tutorial()
+    {
     }
 }

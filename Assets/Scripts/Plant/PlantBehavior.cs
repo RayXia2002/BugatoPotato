@@ -59,10 +59,10 @@ public class PlantBehavior : MonoBehaviour, IDamageable
     public enum PlantStage
     {
         StageOne = 1,
-        StageTwo = 2,
-        StageThree = 3,
-        StageFour = 4,
-        StageFive = 5
+        StageTwo = 3,
+        StageThree = 5,
+        StageFour = 7,
+        StageFive = 9
     }
 
 }

@@ -7,7 +7,7 @@ public class CaterBehave : MonoBehaviour, IDamageable
     public float speed;
     private bool attk;
     private float lastAtk;
-    private float atkSpd = 0.2f;
+    private float atkSpd = 3f;
     private bool moving = true;
     public float atkDmg = 1f;
     public float playerAtkDmg = 1f;

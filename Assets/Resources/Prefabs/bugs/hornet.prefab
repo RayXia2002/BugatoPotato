@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7547400965523120729}
   - component: {fileID: 2096379606272167236}
   - component: {fileID: 1444312369794490944}
+  - component: {fileID: -2496868164933968995}
   m_Layer: 0
   m_Name: hornet
   m_TagString: Untagged
@@ -105,3 +106,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-2496868164933968995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794215234255911274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8e4a1a60e0e6444ae828297fa430e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  dale: {fileID: 0}
+  atkDmg: 1
+  playerAtkDmg: 1
+  bullet: {fileID: 0}

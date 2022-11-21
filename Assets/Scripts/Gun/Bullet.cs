@@ -8,12 +8,9 @@ public class Bullet : MonoBehaviour
     public float timeElasped;
     private float timeStart;
     public float atkDmg;
-
     public GameObject dieEffect;
     private GameObject player;
-
     public float knockback = 2.0f;
-
     private Rigidbody2D rb;
     public GameObject branch;
     public float percentX;

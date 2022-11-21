@@ -147,10 +147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be761726cd0be641b2ad58fa4dee9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 1
   atkDmg: 1
   playerAtkDmg: 1
   bullet: {fileID: 2748493378002695687, guid: ba166f779fa9d254496e2b001def6a5e, type: 3}
+  pause: 0
 --- !u!95 &2318918224959891883
 Animator:
   serializedVersion: 4

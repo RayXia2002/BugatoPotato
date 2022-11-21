@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
     {
         flyBehavior.speed = 0.75f;
         beetleBehavior.speed = 0.4f;
-        caterBehavior.speed = 0.2f;
+        caterBehavior.speed = 1.5f;
         
         dnc.dayIdle = false;
         sc.CloseShop();

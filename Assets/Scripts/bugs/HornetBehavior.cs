@@ -36,7 +36,12 @@ public class HornetBehavior : MonoBehaviour, IDamageable
             if (direction.x < 0) {
                 // face the correct direction
                 Vector3 origScale = transform.localScale;
-                origScale.x *= -1;
+                origScale.x = -0.03f;
+                transform.localScale = origScale;
+            } else {
+                // face the correct direction
+                Vector3 origScale = transform.localScale;
+                origScale.x = 0.03f;
                 transform.localScale = origScale;
             }
         }
@@ -59,14 +64,15 @@ public class HornetBehavior : MonoBehaviour, IDamageable
             moving = false;
             StartCoroutine(Flash());
 
+            moving = true;
             // dash toward dale while attack animation
             StartCoroutine(Dash());
 
-            // return to moving normally
-            moving = true;
-
             // end attack
             attk = false;
+
+            // start cooldown
+            StartCoroutine(PauseMove());
         }
     }
 
@@ -75,7 +81,6 @@ public class HornetBehavior : MonoBehaviour, IDamageable
         if (other.gameObject.tag == "bullet" && health <= 0) {
             // change bug mode
             moving = false;
-            attk = false;
 
             // update animation
             col.enabled = false;
@@ -128,14 +133,23 @@ public class HornetBehavior : MonoBehaviour, IDamageable
     private IEnumerator Dash() {
         // start animation
         gameObject.GetComponent<Animator>().SetBool("isAttk", true);
+        // save current speed
+        float spd = speed;
         // increase speed
-        float spd = 3f;
-        // move forward
-        transform.position += transform.forward * Time.smoothDeltaTime * spd;
+        speed = 3f;
 
         yield return new WaitForSeconds(0.4f);
         // return to flying animation
         gameObject.GetComponent<Animator>().SetBool("isAttk", false);
+        // restore speed
+        speed = spd;
+    }
+
+    // pause hornet after attack
+    private IEnumerator PauseMove() {
+        moving = false;
+        yield return new WaitForSeconds(0.5f);
+        moving = true;
     }
 
 }

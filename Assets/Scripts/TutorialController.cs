@@ -14,7 +14,7 @@ public class TutorialController : MonoBehaviour
     public GameObject uiTutu;
 
     public int stage = 0;
-    private static bool display = true;
+    private bool display = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,8 +52,8 @@ public class TutorialController : MonoBehaviour
         }
     }
 
-    public void DisplayTutorial()
+    public void DisplayTutorial(bool d)
     {
-        display = !display;
+        display = d;
     }
 }

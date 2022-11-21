@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     }
     public int day { get; set; }
     public float plantHealth { get; set; }
+    public float plantMaxHealth { get; set; }
     public float playerHealth { get; set; }
     public int playerMaxHealth { get; set; }
     public bool plantChange { get; set;}
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
                 caterBehavior.speed += (0.009f * dnc.numOfDays);
                 beetleBehavior.speed += (0.009f * dnc.numOfDays);   
             }
+            plantMaxHealth += 10;
             plantChange = true;
             shoot.meterValue = shoot.maxMeterValue;
             pb.healthHearts.SetHearts(6, 3);
@@ -105,7 +107,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         day = 1;
-        plantHealth = 15f;
+        plantHealth = 10f;
+        plantMaxHealth = 10f;
         playerHealth = 6;
         playerMaxHealth = 3;
         startDayButton.onClick.AddListener(StartDay);        

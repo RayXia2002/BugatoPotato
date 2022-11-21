@@ -8,6 +8,7 @@ public class BugSpawner : MonoBehaviour
     public GameObject beetleSpawn;
     public GameObject flySpawn;
     public GameObject caterSpawn;
+    public GameObject hornetSpawn;
 
     // values for spawning rate
     public float spawnRate = 3f;
@@ -55,9 +56,9 @@ public class BugSpawner : MonoBehaviour
             lastSpawnFly = Time.time;
         }
 
-        if ((Time.time - lastSpawnHornet >= spawnRate * lastSpawnHornet) && spawn && !pause && GameManager.Instance.day >= 4) 
+        if ((Time.time - lastSpawnHornet >= spawnRate * spawnHornetRate) && spawn && !pause && GameManager.Instance.day >= 1) 
         {
-            //spawnHornet();
+            spawnHornet();
             lastSpawnHornet = Time.time;
         }
         
@@ -159,15 +160,15 @@ public class BugSpawner : MonoBehaviour
         // create flying beetle
         //Vector3 pos = new Vector3(-3.6f, -0.2f, 0f);
         Vector3 pos = new Vector3(xval, height, -1f);
-        GameObject flyBeetle = Instantiate(flySpawn, pos, Quaternion.identity);
+        GameObject hornet = Instantiate(hornetSpawn, pos, Quaternion.identity);
 
         if (direction == 0) {
             // face the left if direction is left
-            Vector3 origScale = flyBeetle.transform.localScale;
+            Vector3 origScale = hornet.transform.localScale;
             origScale.x *= -1;
-            flyBeetle.transform.localScale = origScale;
+            hornet.transform.localScale = origScale;
             // change walking direction
-            flyBeetle.GetComponent<FlyBehave>().speed = -1 * flyBeetle.GetComponent<FlyBehave>().speed;
+            hornet.GetComponent<HornetBehavior>().speed = -1 * hornet.GetComponent<HornetBehavior>().speed;
         }
     }
 

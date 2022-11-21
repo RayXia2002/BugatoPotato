@@ -6332,6 +6332,7 @@ MonoBehaviour:
   beetleSpawn: {fileID: 3458852921978807208, guid: d9a81903458a5794ebb6cc0d6eae63c7, type: 3}
   flySpawn: {fileID: 4739099846613927875, guid: fd5c2532fe6d468409810ff5c18df988, type: 3}
   caterSpawn: {fileID: 4888656521782052211, guid: af5bfaaf1aa3d1144954dc9a4040e8e7, type: 3}
+  hornetSpawn: {fileID: 1794215234255911274, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
   spawnRate: 2.5
   spawnCaterRate: 1
   spawnBeetleRate: 3
@@ -10611,7 +10612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1794215234255911274, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1794215234255911274, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: m_TagString

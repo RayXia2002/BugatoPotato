@@ -19,8 +19,7 @@ public class PlantBehavior : MonoBehaviour, IDamageable
  
     void Start()
     {
-        health = GameManager.Instance.plantHealth;
-        healthBar.SetMaxHealth(health);
+        healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
     }
 
     void Update()
@@ -37,38 +36,39 @@ public class PlantBehavior : MonoBehaviour, IDamageable
 
     public void ChangePlantStage(PlantStage day)
     {
+        GameManager.Instance.plantHealth += 10f;
         health = GameManager.Instance.plantHealth;
         if (day == PlantStage.StageOne)
         {
-            healthBar.SetHealth(health);
             healthBar.SetMaxHealth(health);
+            healthBar.SetHealth(health);
             stageOne.SetActive(true);
         }
         if (day == PlantStage.StageTwo)
         {
-            healthBar.SetHealth((health + 10f));
-            healthBar.SetMaxHealth(20f);
+            healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
+            healthBar.SetHealth(health);
             stageOne.SetActive(false);
             stageTwo.SetActive(true);
         }
         if (day == PlantStage.StageThree)
         {
-            healthBar.SetHealth((health + 10f));
-            healthBar.SetMaxHealth(30f);
+            healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
+            healthBar.SetHealth(health);
             stageTwo.SetActive(false);
             stageThree.SetActive(true);
         }
         if (day == PlantStage.StageFour)
         {
-            healthBar.SetHealth((health + 10f));
-            healthBar.SetMaxHealth(40f);
+            healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
+            healthBar.SetHealth(health);
             stageThree.SetActive(false);
             stageFour.SetActive(true);
         }
         if (day == PlantStage.StageFive)
         {
-            healthBar.SetHealth((health + 10f));
-            healthBar.SetMaxHealth(50f);
+            healthBar.SetMaxHealth(GameManager.Instance.plantMaxHealth);
+            healthBar.SetHealth(health);
             stageFour.SetActive(false);
             stageFive.SetActive(true);
         }

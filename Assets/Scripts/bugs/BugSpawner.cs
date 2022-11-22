@@ -108,6 +108,7 @@ public class BugSpawner : MonoBehaviour
     private void spawnFly() {
         
         GameObject plant = GameObject.FindGameObjectWithTag("stem");
+        Debug.Log(plant.name);
         float plantHeight = plant.GetComponent<SpriteRenderer>().bounds.size.y;
         float minHeight = plant.transform.position.y + 0.1f - plantHeight / 2;
         float maxHeight = plant.transform.position.y - 0.1f + plantHeight / 2;
@@ -119,7 +120,7 @@ public class BugSpawner : MonoBehaviour
 
         // create flying beetle
         //Vector3 pos = new Vector3(-3.6f, -0.2f, 0f);
-        Vector3 pos = new Vector3(xval, maxHeight, -1f);
+        Vector3 pos = new Vector3(xval, height, -1f);
         GameObject flyBeetle = Instantiate(flySpawn, pos, Quaternion.identity);
 
         if (direction == 0) {

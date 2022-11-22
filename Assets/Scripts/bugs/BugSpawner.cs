@@ -17,10 +17,10 @@ public class BugSpawner : MonoBehaviour
     public float spawnFlyRate = 3f;
     public float spawnHornetRate = 3f;
     private float lastSpawn = 0f;
-    private float lastSpawnCater = 0f;
-    private float lastSpawnBeetle = 0f;
-    private float lastSpawnFly = 0f;
-    private float lastSpawnHornet = 0f;
+    private float lastSpawnCater = 0.1f;
+    private float lastSpawnBeetle = 3f;
+    private float lastSpawnFly = 3f;
+    private float lastSpawnHornet = 3f;
     public bool spawn = false;
     public bool pause = false;
 

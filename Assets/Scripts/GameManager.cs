@@ -94,10 +94,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (tc.stage >= 2 && dnc.dayIdle)
+        if (tc.stage == 2)
         {
-            
-            
+            bs.spawn = true;
+            tc.stage++;
         }
         // if(Input.GetKeyDown("p"))
         // {
@@ -129,12 +129,28 @@ public class GameManager : MonoBehaviour
         beetleBehavior.speed = 0.4f;
         caterBehavior.speed = 1.5f;
         
+        shoot.canFire = true;
         dnc.dayIdle = false;
         sc.CloseShop();
-        dale.SetActive(true);
-        tutorialHUD.SetActive(true);
         shoot.canFire = true;
-        bs.spawn = true;
+        
+        Debug.Log(GameValues.toggleTutorial);
+        // if tutu is toggled on set display to true
+        if (GameValues.toggleTutorial)
+        {
+            
+            tutorialHUD.SetActive(true);
+            tc.DisplayTutorial(true);
+            tc.stage = 0;
+            TutorialPause();
+        }
+        // else set display to false
+        else
+        {
+            tc.DisplayTutorial(false);
+            tc.stage = -1;
+            bs.spawn = true;
+        }
     }
 
     private void CountBugs()
@@ -154,10 +170,10 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-
     }
 
-    public void Tutorial()
+    private void TutorialPause()
     {
+        bs.spawn = false;
     }
 }

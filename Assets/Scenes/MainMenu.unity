@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 68225719}
   - component: {fileID: 68225721}
   - component: {fileID: 68225720}
+  - component: {fileID: 68225722}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -352,6 +353,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68225718}
   m_CullTransparentMesh: 1
+--- !u!95 &68225722
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68225718}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41bb2a38b6552e34dae82e603d88b783, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &96830454
 GameObject:
   m_ObjectHideFlags: 0
@@ -3176,8 +3197,8 @@ GameObject:
   - component: {fileID: 1090211453}
   - component: {fileID: 1090211452}
   - component: {fileID: 1090211451}
-  - component: {fileID: 1090211454}
   - component: {fileID: 1090211455}
+  - component: {fileID: 1090211456}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -3291,40 +3312,8 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: bbe52f6ebc92c2649a81bf38a3147010, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_IsOn: 1
---- !u!95 &1090211454
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090211449}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 41bb2a38b6552e34dae82e603d88b783, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+      m_Calls: []
+  m_IsOn: 0
 --- !u!114 &1090211455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3337,7 +3326,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b95d493a1f96d4c82d5b45481e8e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Button: {fileID: 1090211450}
+  Button: {fileID: 68225719}
+--- !u!114 &1090211456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090211449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c65db65a6b63e648bec5a857288b377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1204839106
 GameObject:
   m_ObjectHideFlags: 0

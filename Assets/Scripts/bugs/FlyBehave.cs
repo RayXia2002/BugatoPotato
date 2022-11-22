@@ -13,7 +13,6 @@ public class FlyBehave : MonoBehaviour, IDamageable
     public float playerAtkDmg = 1f;
     public float health { get; set; }
     private SpriteRenderer spriteRenderer;
-    public Bullet bullet;
     Collider2D col;
     Collider2D plant;
     public bool pause = false;

@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayerControl() {
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
-        if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && !isJumping) {
+        if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && !isJumping && rb.velocity.y <= 0.1f) {
             rb.velocity = new Vector3(rb.velocity.x, characterJumpSpeed, 0);
             isJumping = true;
         }
@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
             direction = false;
             StartCoroutine(RampUp(direction));
         }
-
         if (!Input.GetKey("a") && !Input.GetKey("d"))
         {
             if(isMoving || moveEnd > 0)
@@ -53,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("OneWayPlatform")) {
             isJumping = false;

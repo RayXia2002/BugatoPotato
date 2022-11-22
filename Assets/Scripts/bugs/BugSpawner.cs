@@ -110,7 +110,7 @@ public class BugSpawner : MonoBehaviour
         GameObject plant = GameObject.FindGameObjectWithTag("stem");
         float plantHeight = plant.GetComponent<SpriteRenderer>().bounds.size.y;
         float minHeight = plant.transform.position.y + 0.1f - plantHeight / 2;
-        float maxHeight = plant.transform.position.y + plantHeight / 2;
+        float maxHeight = plant.transform.position.y - 0.1f + plantHeight / 2;
         // get random direction
         int direction = Random.Range(0, 2);
         float height = (Random.Range(minHeight, maxHeight));

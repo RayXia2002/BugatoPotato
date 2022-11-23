@@ -108,7 +108,6 @@ public class BugSpawner : MonoBehaviour
     private void spawnFly() {
         
         GameObject plant = GameObject.FindGameObjectWithTag("stem");
-        Debug.Log(plant.name);
         float plantHeight = plant.GetComponent<SpriteRenderer>().bounds.size.y;
         float minHeight = plant.transform.position.y + 0.1f - plantHeight / 2;
         float maxHeight = plant.transform.position.y - 0.1f + plantHeight / 2;

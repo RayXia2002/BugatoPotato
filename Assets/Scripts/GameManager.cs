@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public int playerMaxHealth { get; set; }
     public bool plantChange { get; set;}
     public float extraPotatoes { get; set; }
+    public float potatoes { get; set; }
     public DayNightController dnc;
     public ShopController sc;
     public TutorialController tc;
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
             pb.healthHearts.SetHearts(6, 3);
             pb.health = 6;
             dnc.lengthOfCycle = 0.015f;
-            sc.potatoes += extraPotatoes;
+            potatoes += extraPotatoes;
             dnc.nightTime = false;
             bs.spawn = false;
             sc.OpenShop();

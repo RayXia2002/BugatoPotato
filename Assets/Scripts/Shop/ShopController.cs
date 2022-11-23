@@ -10,70 +10,70 @@ public class ShopController : MonoBehaviour
     public TextMeshProUGUI potatoesTxt;
     public TextMeshProUGUI potatoesTxtHud;
     public UpgradeController upgradeController;
-    public Button upgradeButton1, upgradeButton2, upgradeButton3, startDayButton;
-    public GameObject upgradeCard1;
-    public GameObject upgradeCard2;
-    public GameObject upgradeCard3;
     public GameObject storeUI;
+    public GameObject[] allUpgrades;
+    public GameObject cardArea; 
     // Start is called before the first frame update
     void Start()
     {
-        
         potatoesTxt.text = potatoes.ToString();
-        upgradeButton1.onClick.AddListener(PurchaseUpgrade1);
-        upgradeButton2.onClick.AddListener(PurchaseUpgrade2);
-        upgradeButton3.onClick.AddListener(PurchaseUpgrade3);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       potatoesTxt.text = potatoes.ToString();
-       potatoesTxtHud.text = potatoes.ToString();
+        potatoes  = GameManager.Instance.potatoes;
+        potatoesTxt.text = potatoes.ToString();
+        potatoesTxtHud.text = potatoes.ToString();
     }
 
-    public void PurchaseUpgrade1()
+    public void PopulateShop()
     {
-        if (potatoes >= 5)
+        ClearCards();
+        Shuffle(allUpgrades);
+        Vector3 spot = new Vector3(0, 0, 0);
+        GameObject card1 = Instantiate(allUpgrades[0], spot, Quaternion.identity);
+        GameObject card2 = Instantiate(allUpgrades[1], spot, Quaternion.identity);
+        GameObject card3 = Instantiate(allUpgrades[2], spot, Quaternion.identity);
+        card1.transform.SetParent(cardArea.transform);
+        card1.transform.localScale = new Vector3(1,1,1);
+        card2.transform.SetParent(cardArea.transform);
+        card2.transform.localScale = new Vector3(1,1,1);
+        card3.transform.SetParent(cardArea.transform);
+        card3.transform.localScale = new Vector3(1,1,1);
+    }
+
+    public void ClearCards()
+    {
+        foreach(Transform t in cardArea.transform)
         {
-            potatoes -= 5;
-            upgradeController.UpgradePlayerSpeed(); 
-            upgradeCard1.SetActive(false);
+            Destroy(t.gameObject);
         }
     }
 
-    public void PurchaseUpgrade2()
-    {
-        if (potatoes >= 5)
-        {
-            potatoes -= 5;
-            upgradeController.UpgradeRefillTimer();
-            upgradeCard2.SetActive(false);      
-        }
+	void Shuffle(GameObject[] a)
+	{
+		for (int i = a.Length-1; i > 0; i--)
+		{
 
-    }
-
-    public void PurchaseUpgrade3()
-    {
-        if (potatoes >= 5)
-        {
-            potatoes -= 5;
-            upgradeController.UpgradeFireRate();
-            upgradeCard3.SetActive(false);
-        }
-
-    }
+			int rnd = Random.Range(0,i);
+			
+			GameObject temp = a[i];
+			
+			a[i] = a[rnd];
+			a[rnd] = temp;
+		}
+	}
 
     public void CloseShop()
     {
-        upgradeCard1.SetActive(true);
-        upgradeCard2.SetActive(true);
-        upgradeCard3.SetActive(true);
         storeUI.SetActive(false);
     }
 
     public void OpenShop()
     {
         storeUI.SetActive(true);
+        PopulateShop();
     }
 }

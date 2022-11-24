@@ -6,10 +6,16 @@ public class UpgradeBehavior : MonoBehaviour
 {
     //public UpgradeController upgradeController;
     public UpgradeController upgradeController;
+    public float rarity;
 
     void Start()
     {
         upgradeController = GameObject.FindObjectOfType<UpgradeController>();
+    }
+
+    public void TestFunction()
+    {
+        Debug.Log("testing");
     }
 
     public void PurchaseSpeed1()

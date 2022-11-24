@@ -42,6 +42,8 @@ public class ShopController : MonoBehaviour
         card2.transform.localScale = new Vector3(1,1,1);
         card3.transform.SetParent(cardArea.transform);
         card3.transform.localScale = new Vector3(1,1,1);
+
+        Debug.Log(allUpgrades[0].GetComponent<UpgradeBehavior>().rarity);
     }
 
     public void ClearCards()

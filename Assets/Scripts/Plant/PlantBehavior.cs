@@ -24,7 +24,10 @@ public class PlantBehavior : MonoBehaviour, IDamageable
 
     void Update()
     {
-        
+        if (GameManager.Instance.plantHealth > 50f)
+        {
+            GameManager.Instance.plantHealth = 50f;
+        }
         healthBar.SetHealth(GameManager.Instance.plantHealth);
         if (GameManager.Instance.plantChange)
         {
@@ -37,6 +40,7 @@ public class PlantBehavior : MonoBehaviour, IDamageable
     public void ChangePlantStage(PlantStage day)
     {
         GameManager.Instance.plantHealth += 10f;
+        GameManager.Instance.plantMaxHealth += 10f;
         health = GameManager.Instance.plantHealth;
         if (day == PlantStage.StageOne)
         {

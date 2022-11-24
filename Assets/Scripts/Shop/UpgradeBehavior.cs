@@ -110,4 +110,34 @@ public class UpgradeBehavior : MonoBehaviour
             this.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
+
+    public void PurchaseBulletSpeed1()
+    {
+        if (GameManager.Instance.potatoes  >= 5)
+        {
+            GameManager.Instance.potatoes -= 5;
+            upgradeController.UpgradeBulletSpeed1();
+            this.transform.GetChild(1).gameObject.SetActive(false);
+        }
+    }
+
+    public void PurchaseBulletSpeed2()
+    {
+        if (GameManager.Instance.potatoes  >= 8)
+        {
+            GameManager.Instance.potatoes -= 8;
+            upgradeController.UpgradeBulletSpeed2();
+            this.transform.GetChild(1).gameObject.SetActive(false);
+        }
+    }
+
+    public void PurchaseBulletSpeed3()
+    {
+        if (GameManager.Instance.potatoes  >= 13)
+        {
+            GameManager.Instance.potatoes -= 13;
+            upgradeController.UpgradeBulletSpeed3();
+            this.transform.GetChild(1).gameObject.SetActive(false);
+        }
+    }
 }

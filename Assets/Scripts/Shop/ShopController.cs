@@ -11,8 +11,17 @@ public class ShopController : MonoBehaviour
     public TextMeshProUGUI potatoesTxtHud;
     public UpgradeController upgradeController;
     public GameObject storeUI;
-    public GameObject[] allUpgrades;
+    public List<GameObject> allUpgrades;
+    public List<GameObject> commonUpgrades;
+    public List<GameObject> rareUpgrades;
+    public List<GameObject> epicUpgrades;
+    private List<GameObject> commonTemp;
+    private List<GameObject> rareTemp;
+    private List<GameObject> epicTemp;
     public GameObject cardArea; 
+    private GameObject pickedUpgrade;
+    private GameObject pickedUpgrade2;
+    private GameObject pickedUpgrade3;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,19 +40,58 @@ public class ShopController : MonoBehaviour
     public void PopulateShop()
     {
         ClearCards();
-        Shuffle(allUpgrades);
-        Vector3 spot = new Vector3(0, 0, 0);
-        GameObject card1 = Instantiate(allUpgrades[0], spot, Quaternion.identity);
-        GameObject card2 = Instantiate(allUpgrades[1], spot, Quaternion.identity);
-        GameObject card3 = Instantiate(allUpgrades[2], spot, Quaternion.identity);
-        card1.transform.SetParent(cardArea.transform);
-        card1.transform.localScale = new Vector3(1,1,1);
-        card2.transform.SetParent(cardArea.transform);
-        card2.transform.localScale = new Vector3(1,1,1);
-        card3.transform.SetParent(cardArea.transform);
-        card3.transform.localScale = new Vector3(1,1,1);
+        //Shuffle(allUpgrades);
 
-        Debug.Log(allUpgrades[0].GetComponent<UpgradeBehavior>().rarity);
+        commonTemp = new List<GameObject>(commonUpgrades);
+        rareTemp = new List<GameObject>(rareUpgrades);
+        epicTemp = new List<GameObject>(epicUpgrades);
+
+        for (int i = 0; i < 3; i++)
+        {
+            CreateCard();
+        }
+
+    }
+
+    public GameObject CalculateOdds()
+    {
+    
+        float commonRate = GameManager.Instance.commonUpgradeRate;
+        float rareRate = GameManager.Instance.rareUpgradeRate;
+        float epicRate = GameManager.Instance.epicUpgradeRate;
+
+        int odds = Random.Range(0,100);
+        GameObject targetUpgrade;
+
+        if (odds <= commonRate)
+        {
+            int rndUpgrade = Random.Range(0, commonTemp.Count);
+            targetUpgrade = commonTemp[rndUpgrade];
+            commonTemp.RemoveAt(rndUpgrade);
+        }
+        else if (odds - commonRate <= rareRate)
+        {
+            int rndUpgrade = Random.Range(0, rareTemp.Count);
+            targetUpgrade = rareTemp[rndUpgrade];
+            rareTemp.RemoveAt(rndUpgrade);           
+        }
+        else
+        {
+            int rndUpgrade = Random.Range(0, epicTemp.Count);
+            targetUpgrade = epicTemp[rndUpgrade];
+            epicTemp.RemoveAt(rndUpgrade);     
+        }
+        
+        return targetUpgrade;
+    }
+
+    public void CreateCard()
+    {
+        pickedUpgrade = CalculateOdds();
+        Vector3 spot = new Vector3(0, 0, 0);
+        GameObject card = Instantiate(pickedUpgrade, spot, Quaternion.identity);
+        card.transform.SetParent(cardArea.transform);
+        card.transform.localScale = new Vector3(1,1,1);
     }
 
     public void ClearCards()

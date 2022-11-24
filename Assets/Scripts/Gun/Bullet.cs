@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
+        speed = speed;
         timeStart = Time.time;
         player = GameObject.Find("Dale");
         rb = GetComponent<Rigidbody2D>();

@@ -130,8 +130,8 @@ public class GameManager : MonoBehaviour
 
     public void StartFirstDay()
     {
-        commonUpgradeRate = 80f;
-        rareUpgradeRate = 20f;
+        commonUpgradeRate = 100f;
+        rareUpgradeRate = 0f;
         epicUpgradeRate = 0f;
         flyBehavior.speed = 0.75f;
         beetleBehavior.speed = 0.4f;

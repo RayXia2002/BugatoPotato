@@ -34,6 +34,7 @@ public class Shoot : MonoBehaviour
     {
         if(Input.GetButton("Fire1") && !isShooting && meterValue > 0 && canFire) 
         {
+            GetComponent<AudioSource>().Play();
             StartCoroutine(ShootB());
         }
         else if (meterValue < maxMeterValue && !refilling && !Input.GetButton("Fire1"))

@@ -15,6 +15,7 @@ public class DayNightController : MonoBehaviour
     //[Range(0,1)]
     public float time;
     public DayNightInterface[] lights;
+    public GameObject fireFlies;
     public bool day;
     public bool dayIdle;
     public bool nightTime;
@@ -70,6 +71,15 @@ public class DayNightController : MonoBehaviour
                 time = 0f;
                 dayStatus.SetDay(numOfDays);
             }
+        }
+
+        if (time < 0.55f)
+        {
+            fireFlies.SetActive(false);
+        }
+        else if (time > 0.55f)
+        {
+            fireFlies.SetActive(true);
         }
 
     }

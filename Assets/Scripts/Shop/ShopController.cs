@@ -10,70 +10,120 @@ public class ShopController : MonoBehaviour
     public TextMeshProUGUI potatoesTxt;
     public TextMeshProUGUI potatoesTxtHud;
     public UpgradeController upgradeController;
-    public Button upgradeButton1, upgradeButton2, upgradeButton3, startDayButton;
-    public GameObject upgradeCard1;
-    public GameObject upgradeCard2;
-    public GameObject upgradeCard3;
     public GameObject storeUI;
+    public List<GameObject> allUpgrades;
+    public List<GameObject> commonUpgrades;
+    public List<GameObject> rareUpgrades;
+    public List<GameObject> epicUpgrades;
+    private List<GameObject> commonTemp;
+    private List<GameObject> rareTemp;
+    private List<GameObject> epicTemp;
+    public GameObject cardArea; 
+    private GameObject pickedUpgrade;
+    private GameObject pickedUpgrade2;
+    private GameObject pickedUpgrade3;
     // Start is called before the first frame update
     void Start()
     {
-        
         potatoesTxt.text = potatoes.ToString();
-        upgradeButton1.onClick.AddListener(PurchaseUpgrade1);
-        upgradeButton2.onClick.AddListener(PurchaseUpgrade2);
-        upgradeButton3.onClick.AddListener(PurchaseUpgrade3);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       potatoesTxt.text = potatoes.ToString();
-       potatoesTxtHud.text = potatoes.ToString();
+        potatoes  = GameManager.Instance.potatoes;
+        potatoesTxt.text = potatoes.ToString();
+        potatoesTxtHud.text = potatoes.ToString();
     }
 
-    public void PurchaseUpgrade1()
+    public void PopulateShop()
     {
-        if (potatoes >= 5)
-        {
-            potatoes -= 5;
-            upgradeController.UpgradePlayerSpeed(); 
-            upgradeCard1.SetActive(false);
-        }
-    }
+        ClearCards();
+        //Shuffle(allUpgrades);
 
-    public void PurchaseUpgrade2()
-    {
-        if (potatoes >= 5)
+        commonTemp = new List<GameObject>(commonUpgrades);
+        rareTemp = new List<GameObject>(rareUpgrades);
+        epicTemp = new List<GameObject>(epicUpgrades);
+
+        for (int i = 0; i < 3; i++)
         {
-            potatoes -= 5;
-            upgradeController.UpgradeRefillTimer();
-            upgradeCard2.SetActive(false);      
+            CreateCard();
         }
 
     }
 
-    public void PurchaseUpgrade3()
+    public GameObject CalculateOdds()
     {
-        if (potatoes >= 5)
-        {
-            potatoes -= 5;
-            upgradeController.UpgradeFireRate();
-            upgradeCard3.SetActive(false);
-        }
+    
+        float commonRate = GameManager.Instance.commonUpgradeRate;
+        float rareRate = GameManager.Instance.rareUpgradeRate;
+        float epicRate = GameManager.Instance.epicUpgradeRate;
 
+        int odds = Random.Range(0,100);
+        GameObject targetUpgrade;
+
+        if (odds <= commonRate)
+        {
+            int rndUpgrade = Random.Range(0, commonTemp.Count);
+            targetUpgrade = commonTemp[rndUpgrade];
+            commonTemp.RemoveAt(rndUpgrade);
+        }
+        else if (odds - commonRate <= rareRate)
+        {
+            int rndUpgrade = Random.Range(0, rareTemp.Count);
+            targetUpgrade = rareTemp[rndUpgrade];
+            rareTemp.RemoveAt(rndUpgrade);           
+        }
+        else
+        {
+            int rndUpgrade = Random.Range(0, epicTemp.Count);
+            targetUpgrade = epicTemp[rndUpgrade];
+            epicTemp.RemoveAt(rndUpgrade);     
+        }
+        
+        return targetUpgrade;
     }
+
+    public void CreateCard()
+    {
+        pickedUpgrade = CalculateOdds();
+        Vector3 spot = new Vector3(0, 0, 0);
+        GameObject card = Instantiate(pickedUpgrade, spot, Quaternion.identity);
+        card.transform.SetParent(cardArea.transform);
+        card.transform.localScale = new Vector3(1,1,1);
+    }
+
+    public void ClearCards()
+    {
+        foreach(Transform t in cardArea.transform)
+        {
+            Destroy(t.gameObject);
+        }
+    }
+
+	void Shuffle(GameObject[] a)
+	{
+		for (int i = a.Length-1; i > 0; i--)
+		{
+
+			int rnd = Random.Range(0,i);
+			
+			GameObject temp = a[i];
+			
+			a[i] = a[rnd];
+			a[rnd] = temp;
+		}
+	}
 
     public void CloseShop()
     {
-        upgradeCard1.SetActive(true);
-        upgradeCard2.SetActive(true);
-        upgradeCard3.SetActive(true);
         storeUI.SetActive(false);
     }
 
     public void OpenShop()
     {
         storeUI.SetActive(true);
+        PopulateShop();
     }
 }

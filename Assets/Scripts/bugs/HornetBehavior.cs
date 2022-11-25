@@ -85,6 +85,7 @@ public class HornetBehavior : MonoBehaviour, IDamageable
             // update animation
             col.enabled = false;
             gameObject.GetComponent<Animator>().SetBool("isDie", true);
+            GetComponent<AudioSource>().Play();
             StartCoroutine(Die());
         }
     }

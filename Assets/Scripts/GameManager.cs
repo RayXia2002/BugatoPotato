@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
     public int playerMaxHealth { get; set; }
     public bool plantChange { get; set;}
     public float extraPotatoes { get; set; }
+    public float potatoes { get; set; }
+    public float commonUpgradeRate { get; set; }
+    public float rareUpgradeRate { get; set; }
+    public float epicUpgradeRate { get; set; }
     public DayNightController dnc;
     public ShopController sc;
     public TutorialController tc;
@@ -71,13 +75,13 @@ public class GameManager : MonoBehaviour
                 caterBehavior.speed += (0.009f * dnc.numOfDays);
                 beetleBehavior.speed += (0.009f * dnc.numOfDays);   
             }
-            plantMaxHealth += 10;
+            
             plantChange = true;
             shoot.meterValue = shoot.maxMeterValue;
             pb.healthHearts.SetHearts(6, 3);
             pb.health = 6;
             dnc.lengthOfCycle = 0.015f;
-            sc.potatoes += extraPotatoes;
+            potatoes += extraPotatoes;
             dnc.nightTime = false;
             bs.spawn = false;
             sc.OpenShop();
@@ -127,6 +131,9 @@ public class GameManager : MonoBehaviour
 
     public void StartFirstDay()
     {
+        commonUpgradeRate = 80f;
+        rareUpgradeRate = 20f;
+        epicUpgradeRate = 0f;
         flyBehavior.speed = 0.75f;
         beetleBehavior.speed = 0.4f;
         caterBehavior.speed = 1.5f;

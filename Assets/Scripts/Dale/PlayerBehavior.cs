@@ -36,7 +36,7 @@ public class PlayerBehavior : MonoBehaviour, IDamageable
     {
         if (!invincible)
         {
-        
+            GetComponent<AudioSource>().Play();
             health -= damage;
             healthHearts.SetHearts(health, maxHearts);
             //rb.AddForce(knockback, ForceMode2D.Impulse);

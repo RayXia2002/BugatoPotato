@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         {
             bs.spawn = true;
             tc.stage++;
+            dnc.setPause(false);
         }
         // if(Input.GetKeyDown("p"))
         // {
@@ -144,12 +145,14 @@ public class GameManager : MonoBehaviour
             tutorialHUD.SetActive(true);
             tc.DisplayTutorial(true);
             tc.stage = 0;
+            dnc.setPause(true);
             TutorialPause();
         }
         // else set display to false
         else
         {
             tc.DisplayTutorial(false);
+            dnc.setPause(false);
             tc.stage = -1;
             bs.spawn = true;
         }

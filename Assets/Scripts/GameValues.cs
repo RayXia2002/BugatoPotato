@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class GameValues
 {
-    public static bool toggleTutorial { get; set; }
+    public static bool toggleTutorial { get; set; } = true;
 }

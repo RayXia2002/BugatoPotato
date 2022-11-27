@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
     public float bugsOnScreen;
     public bool firstDay = true;
     public bool setUp;
-    private bool pause = false;
     
     void Update()
     {
@@ -105,10 +104,6 @@ public class GameManager : MonoBehaviour
             tc.stage++;
             dnc.setPause(false);
         }
-        // if(Input.GetKeyDown("p"))
-        // {
-        //     PauseGame();
-        // }
     }
     void Awake()
     {
@@ -144,11 +139,9 @@ public class GameManager : MonoBehaviour
         sc.CloseShop();
         shoot.canFire = true;
         
-        Debug.Log(GameValues.toggleTutorial);
         // if tutu is toggled on set display to true
         if (GameValues.toggleTutorial)
         {
-            
             tutorialHUD.SetActive(true);
             tc.DisplayTutorial(true);
             tc.stage = 0;

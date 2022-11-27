@@ -11,17 +11,11 @@ public class TutorialToggle : MonoBehaviour
     {
         t = GetComponent<Toggle>();
         t.onValueChanged.AddListener(delegate {UpdateT(!t.isOn);});
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        t.isOn = !GameValues.toggleTutorial;
     }
 
     void UpdateT(bool o)
     {
         GameValues.toggleTutorial = o;
-        Debug.Log(GameValues.toggleTutorial);
     }
 }

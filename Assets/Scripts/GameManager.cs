@@ -25,16 +25,26 @@ public class GameManager : MonoBehaviour
         }
     }
     public int day { get; set; }
+
+    // plant variables
     public float plantHealth { get; set; }
     public float plantMaxHealth { get; set; }
+    public bool plantChange { get; set;}
+
+    // player variables
     public float playerHealth { get; set; }
     public int playerMaxHealth { get; set; }
-    public bool plantChange { get; set;}
+    
+    // potato variables
     public float extraPotatoes { get; set; }
     public float potatoes { get; set; }
+
+    // upgrade variables
     public float commonUpgradeRate { get; set; }
     public float rareUpgradeRate { get; set; }
     public float epicUpgradeRate { get; set; }
+
+    
     public DayNightController dnc;
     public ShopController sc;
     public TutorialController tc;

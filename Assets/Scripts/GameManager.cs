@@ -25,16 +25,26 @@ public class GameManager : MonoBehaviour
         }
     }
     public int day { get; set; }
+
+    // plant variables
     public float plantHealth { get; set; }
     public float plantMaxHealth { get; set; }
+    public bool plantChange { get; set;}
+
+    // player variables
     public float playerHealth { get; set; }
     public int playerMaxHealth { get; set; }
-    public bool plantChange { get; set;}
+    
+    // potato variables
     public float extraPotatoes { get; set; }
     public float potatoes { get; set; }
+
+    // upgrade variables
     public float commonUpgradeRate { get; set; }
     public float rareUpgradeRate { get; set; }
     public float epicUpgradeRate { get; set; }
+
+    
     public DayNightController dnc;
     public ShopController sc;
     public TutorialController tc;
@@ -57,6 +67,7 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
+
         day = dnc.numOfDays;
         CheckForDeath();
         CountBugs();
@@ -75,26 +86,30 @@ public class GameManager : MonoBehaviour
                 beetleBehavior.speed += (0.009f * dnc.numOfDays);   
             }
             
+    
             plantChange = true;
             shoot.meterValue = shoot.maxMeterValue;
             pb.healthHearts.SetHearts(6, 3);
             pb.health = 6;
             dnc.lengthOfCycle = 0.015f;
-            potatoes += extraPotatoes;
             dnc.nightTime = false;
             bs.spawn = false;
             sc.OpenShop();
-            dale.SetActive(false);
+            //dale.SetActive(false);
+            Time.timeScale = 0;
             tutorialHUD.SetActive(false);
             shoot.canFire = false;
             setUp = true;
+            //dnc.dayStatus.SetPotatoRate(extraPotatoes);
         }
         if (dnc.time > 0.65f)
         {
             bs.spawn = false;
-            if (bugsOnScreen <= 0){
+
+            if (bugsOnScreen <= 0 && setUp == true){
                 dnc.nightTime = true;  
-                setUp = false;             
+                setUp = false;     
+                potatoes += extraPotatoes;        
             }
         }
 
@@ -108,32 +123,34 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         day = 1;
+        extraPotatoes += 5f;
         plantHealth = 10f;
         plantMaxHealth = 10f;
         playerHealth = 6;
         playerMaxHealth = 3;
-        startDayButton.onClick.AddListener(StartDay);        
+        startDayButton.onClick.AddListener(StartDay);   
+        setUp = true;
     }
 
     public void StartDay()
     {
         dnc.dayIdle = false;
         sc.CloseShop();
-        dale.SetActive(true);
+        //dale.SetActive(true);
+        Time.timeScale = 1;
         shoot.canFire = true;
         bs.spawn = true;
     }
 
     public void StartFirstDay()
     {
-        commonUpgradeRate = 80f;
-        rareUpgradeRate = 20f;
+        commonUpgradeRate = 100f;
+        rareUpgradeRate = 0f;
         epicUpgradeRate = 0f;
         flyBehavior.speed = 0.75f;
         beetleBehavior.speed = 0.4f;
         caterBehavior.speed = 1.5f;
         
-        extraPotatoes += 5f;
         shoot.canFire = true;
         dnc.dayIdle = false;
         sc.CloseShop();

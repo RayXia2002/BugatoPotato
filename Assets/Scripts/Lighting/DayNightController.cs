@@ -12,6 +12,7 @@ public class DayNightController : MonoBehaviour
 {
     
     public DayStatus dayStatus;
+    public EndOfDayStatus endOfDayStatus;
     //[Range(0,1)]
     public float time;
     public DayNightInterface[] lights;
@@ -24,6 +25,7 @@ public class DayNightController : MonoBehaviour
     public int numOfDays = 1;
     public bool pause = false;
     private bool nextDay = false;
+    private bool showDayPanel = true;
 
 
 
@@ -53,10 +55,6 @@ public class DayNightController : MonoBehaviour
         {
             day = false;            
         }
-        else if (time <= 0f)
-        {
-            day = true;
-        }
         
         if (day && !dayIdle && !pause)
         {
@@ -64,28 +62,32 @@ public class DayNightController : MonoBehaviour
         }
         else if (!day && nightTime == true)
         {
-            if (time <= 1f)
+            if (time <= 1f && !nextDay)
             {
                 time = Mathf.Lerp(time, 1.1f, Time.smoothDeltaTime * 1f);   
             }
 
-            if (time >= 1f)
+            if (time >= 1f && showDayPanel)
             {
                 IEnumerator coroutine = ShowEndOfDay();
                 StartCoroutine(coroutine);
 
             }
-            if (nextDay)
-            {
-                time = 0f;
-            }
             if (time <= 0)
             {
+                ++numOfDays;
+                nextDay = false;
                 day = true;
                 dayIdle = true;
+                showDayPanel = true;
                 //time = 0f;
                 dayStatus.SetDay(numOfDays);
             }
+        }
+
+        if (nextDay)
+        {
+            time = Mathf.Lerp(time, -0.1f, Time.smoothDeltaTime * 3f);   
         }
 
         if (time < 0.55f)
@@ -101,8 +103,12 @@ public class DayNightController : MonoBehaviour
 
     private IEnumerator ShowEndOfDay()
     {
-        ++numOfDays;
-        time = 0f;
+        showDayPanel = false;
+        //Debug.Log("how often does this get called");
+        //++numOfDays;
+        endOfDayStatus.SetDay(numOfDays);
+        endOfDayStatus.SetPotato(GameManager.Instance.potatoes);
+        endOfDayStatus.SetPotatoRate(GameManager.Instance.extraPotatoes);
         endOfDay.SetActive(true);
         yield return new WaitForSeconds(3f);
         endOfDay.SetActive(false);

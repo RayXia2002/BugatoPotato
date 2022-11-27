@@ -9,6 +9,7 @@ public class ShopController : MonoBehaviour
     public float potatoes;
     public TextMeshProUGUI potatoesTxt;
     public TextMeshProUGUI potatoesTxtHud;
+    public TextMeshProUGUI potatoRate;
     public UpgradeController upgradeController;
     public GameObject storeUI;
     public List<GameObject> allUpgrades;
@@ -35,6 +36,7 @@ public class ShopController : MonoBehaviour
         potatoes  = GameManager.Instance.potatoes;
         potatoesTxt.text = potatoes.ToString();
         potatoesTxtHud.text = potatoes.ToString();
+        potatoRate.text = GameManager.Instance.extraPotatoes.ToString();
     }
 
     public void PopulateShop()

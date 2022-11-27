@@ -16,7 +16,7 @@ public class GunParent : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.right = (mousePosition-(Vector2)transform.position).normalized;
+        transform.right = ((mousePosition-(Vector2)transform.position) * Time.smoothDeltaTime).normalized;
         
         float rotZ = transform.rotation.eulerAngles.z;
 

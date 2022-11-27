@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1acff7da059c18e40b174d362d95a834
+guid: 038b3d24c54472741af4bb14c175c4d4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dmgUpgrade_0
+      name: bulletSpeed_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 547530df3806d2e449d3f77b7a5b3571
-      internalID: 1132933649
+      spriteID: 2af7250930fda994aa0585e3e0a95357
+      internalID: 153065485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dmgUpgrade_1
+      name: bulletSpeed_1
       rect:
         serializedVersion: 2
         x: 54
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c8beef15a3ac884a9c0d59a0d323832
-      internalID: -2053583185
+      spriteID: 2bb75f08feef15849a0c3f87b6aa1efd
+      internalID: -2065144701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dmgUpgrade_2
+      name: bulletSpeed_2
       rect:
         serializedVersion: 2
         x: 0
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5da3d42f691cbf649b62e353541743e6
-      internalID: -48819457
+      spriteID: 81ae5e5fc213b5648a6c78d9b86cced2
+      internalID: 1885548343
       vertices: []
       indices: 
       edges: []
@@ -190,9 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dmgUpgrade_2: -48819457
-      dmgUpgrade_0: 1132933649
-      dmgUpgrade_1: -2053583185
+      bulletSpeed_1: -2065144701
+      bulletSpeed_0: 153065485
+      bulletSpeed_2: 1885548343
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

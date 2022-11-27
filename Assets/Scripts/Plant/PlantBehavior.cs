@@ -11,6 +11,7 @@ public class PlantBehavior : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
+        GetComponent<AudioSource>().Play();
         GameManager.Instance.plantHealth -= damage;
         healthBar.SetHealth(GameManager.Instance.plantHealth);
         Debug.Log(GameManager.Instance.plantHealth);

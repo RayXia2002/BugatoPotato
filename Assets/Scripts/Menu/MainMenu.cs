@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     void Start()
     {
-        GameValues.toggleTutorial = true;
+        
     }
 
     public void PlayGame()

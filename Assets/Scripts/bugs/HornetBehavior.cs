@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class HornetBehavior : MonoBehaviour, IDamageable
 {
-    public float speed;
+    public float speed = 0.6f;
+    public float dashSpeed = 3.0f;
+    public float dashingTime = 3f;
+    public float dashingCooldown = 4.0f;
     private GameObject dale;
-    private bool attk;
+    private bool isDash = false, canDash = true;
     private float lastAtk;
     private float atkSpd = 4f;
     private bool moving = true;
@@ -16,6 +19,8 @@ public class HornetBehavior : MonoBehaviour, IDamageable
     private SpriteRenderer spriteRenderer;
     public Bullet bullet;
     Collider2D col;
+    Rigidbody2D rb;
+    Vector3 direction;
     
 
     void Start()
@@ -24,15 +29,27 @@ public class HornetBehavior : MonoBehaviour, IDamageable
         health = 20f;
         col = this.gameObject.GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     
     void Update()
     {
-        // move toward Dale
-        if (moving) {
-            Vector3 direction = (dale.transform.position - this.transform.position).normalized;
+        // update targetting direction to dale
+        direction = (dale.transform.position - this.transform.position).normalized;
+
+        // get distance between dale and hornet
+        float dist = Vector3.Distance(dale.transform.position, this.transform.position);
+        if (dist <= 1.0f) {
+            StartCoroutine(Dash());
+        }
+        else if (moving) {
             this.transform.position += direction * speed * Time.smoothDeltaTime;
+            Flip();
+        }
+        
+        // flips direction of hornet to face player
+        void Flip() {
             if (direction.x < 0) {
                 // face the correct direction
                 Vector3 origScale = transform.localScale;
@@ -46,36 +63,41 @@ public class HornetBehavior : MonoBehaviour, IDamageable
             }
         }
 
-        // get distance between dale and hornet
-        float dist = Vector3.Distance(dale.transform.position, this.transform.position);
 
-        
-        // if close enough, attk is true
-        if (dist <= 1) {
-            attk = true;
-        }
+        // old code
+        // // if time to attack
+        // if (attk && (Time.time - lastAtk >= atkSpd)) {
+        //     // update last attack time
+        //     lastAtk = Time.time;
 
-        // if time to attack
-        if (attk && (Time.time - lastAtk >= atkSpd)) {
-            // update last attack time
-            lastAtk = Time.time;
+        //     // flash red before attack, stop moving for this
+        //     moving = false;
+        //     StartCoroutine(Flash());
 
-            // flash red before attack, stop moving for this
-            moving = false;
-            StartCoroutine(Flash());
+        //     moving = true;
+            
 
-            moving = true;
-            // dash toward dale while attack animation
-            StartCoroutine(Dash());
+        //     // end attack
+        //     attk = false;
 
-            // end attack
-            attk = false;
-
-            // start cooldown
-            StartCoroutine(PauseMove());
-        }
+        //     // start cooldown
+        //     StartCoroutine(PauseMove());
+        // }
     }
 
+    private IEnumerator Dash() {
+        
+        canDash = false;
+        isDash = true;
+        transform.position += dashSpeed * direction * Time.smoothDeltaTime;
+        StartCoroutine(Flash());
+        // pause all movement while dashing
+        yield return new WaitForSeconds(dashingTime);
+        isDash = false;
+        // start cooldown of dash
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+    }
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "bullet" && health <= 0) {
@@ -88,6 +110,7 @@ public class HornetBehavior : MonoBehaviour, IDamageable
             GetComponent<AudioSource>().Play();
             StartCoroutine(Die());
         }
+
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -98,7 +121,9 @@ public class HornetBehavior : MonoBehaviour, IDamageable
             // cause damage to dale
             IDamageable damageable = other.GetComponent<IDamageable>();
             damageable.OnHit(playerAtkDmg);
+            StartCoroutine(PauseMove());
        }
+
     }
 
     //when hit with bullet
@@ -130,26 +155,10 @@ public class HornetBehavior : MonoBehaviour, IDamageable
         spriteRenderer.color = Color.white;
     }
 
-    // dash forward
-    private IEnumerator Dash() {
-        // start animation
-        gameObject.GetComponent<Animator>().SetBool("isAttk", true);
-        // save current speed
-        float spd = speed;
-        // increase speed
-        speed = 3f;
-
-        yield return new WaitForSeconds(0.4f);
-        // return to flying animation
-        gameObject.GetComponent<Animator>().SetBool("isAttk", false);
-        // restore speed
-        speed = spd;
-    }
-
     // pause hornet after attack
     private IEnumerator PauseMove() {
         moving = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
         moving = true;
     }
 

@@ -14991,6 +14991,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 81589363, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1794215234255911274, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: m_Name
       value: hornet
@@ -15001,7 +15005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1794215234255911274, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1794215234255911274, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: m_TagString
@@ -15013,11 +15017,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7547400965523120729, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.14
+      value: 0.977
       objectReference: {fileID: 0}
     - target: {fileID: 7547400965523120729, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.15
+      value: 0.388
       objectReference: {fileID: 0}
     - target: {fileID: 7547400965523120729, guid: 815bad79a4943b74a8430a5458963a74, type: 3}
       propertyPath: m_LocalPosition.z

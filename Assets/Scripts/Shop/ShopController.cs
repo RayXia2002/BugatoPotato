@@ -9,6 +9,7 @@ public class ShopController : MonoBehaviour
     public float potatoes;
     public TextMeshProUGUI potatoesTxt;
     public TextMeshProUGUI potatoesTxtHud;
+    public TextMeshProUGUI potatoRate;
     public UpgradeController upgradeController;
     public GameObject storeUI;
     public List<GameObject> allUpgrades;
@@ -35,13 +36,14 @@ public class ShopController : MonoBehaviour
         potatoes  = GameManager.Instance.potatoes;
         potatoesTxt.text = potatoes.ToString();
         potatoesTxtHud.text = potatoes.ToString();
+        potatoRate.text = GameManager.Instance.extraPotatoes.ToString();
     }
 
     public void PopulateShop()
     {
         ClearCards();
         //Shuffle(allUpgrades);
-
+        ChangeOdds(GameManager.Instance.day);
         commonTemp = new List<GameObject>(commonUpgrades);
         rareTemp = new List<GameObject>(rareUpgrades);
         epicTemp = new List<GameObject>(epicUpgrades);
@@ -102,19 +104,50 @@ public class ShopController : MonoBehaviour
         }
     }
 
-	void Shuffle(GameObject[] a)
-	{
-		for (int i = a.Length-1; i > 0; i--)
-		{
+    public void ChangeOdds(float day)
+    {
+        if (day == 1)
+        {
+            GameManager.Instance.commonUpgradeRate = 100f;
+            GameManager.Instance.rareUpgradeRate = 0f;
+            GameManager.Instance.epicUpgradeRate = 0f;
+        }
 
-			int rnd = Random.Range(0,i);
-			
-			GameObject temp = a[i];
-			
-			a[i] = a[rnd];
-			a[rnd] = temp;
-		}
-	}
+        if (day == 2)
+        {
+            GameManager.Instance.commonUpgradeRate = 100f;
+            GameManager.Instance.rareUpgradeRate = 0f;
+            GameManager.Instance.epicUpgradeRate = 0f;
+        }
+
+        if (day == 3)
+        {
+            GameManager.Instance.commonUpgradeRate = 75f;
+            GameManager.Instance.rareUpgradeRate = 25f;
+            GameManager.Instance.epicUpgradeRate = 0f;
+        }
+
+        if (day == 4)
+        {
+            GameManager.Instance.commonUpgradeRate = 55f;
+            GameManager.Instance.rareUpgradeRate = 30f;
+            GameManager.Instance.epicUpgradeRate = 15f;
+        }
+
+        if (day == 5)
+        {
+            GameManager.Instance.commonUpgradeRate = 45f;
+            GameManager.Instance.rareUpgradeRate = 33f;
+            GameManager.Instance.epicUpgradeRate = 20f;
+        }
+
+        if (day == 6)
+        {
+            GameManager.Instance.commonUpgradeRate = 25f;
+            GameManager.Instance.rareUpgradeRate = 40f;
+            GameManager.Instance.epicUpgradeRate = 30f;
+        }
+    }
 
     public void CloseShop()
     {

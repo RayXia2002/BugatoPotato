@@ -68,4 +68,7 @@ public class Bullet : MonoBehaviour
     public void UpgradeBulletSpeed(float val) {
         speed += val;
     }
+    public void UpgradeBulletDamage(float val) {
+        atkDmg += val;
+    }
 }

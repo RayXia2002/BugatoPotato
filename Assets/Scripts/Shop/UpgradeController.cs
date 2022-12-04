@@ -8,6 +8,7 @@ public class UpgradeController : MonoBehaviour
     public Bullet bullet;
     public Shoot shoot;
     public GameManager gameManager;
+    public ShopController shopController;
     void Start()
     {
         //playerMovement = GetComponent<PlayerMovement>();
@@ -117,4 +118,19 @@ public class UpgradeController : MonoBehaviour
     }
     #endregion Upgrade Double Jump
     
+    #region Upgrade SplitShot
+    public void UpgradeSplitShot()
+    {
+        GameManager.Instance.splitShot = true;
+        shopController.RemoveSplitShot();
+    }
+    #endregion Upgrade SplitShot
+
+    #region Upgrade BigBullets
+    public void UpgradeBigBullets()
+    {
+        GameManager.Instance.bulletSize += new Vector3(5f,5f,5f);
+        GameManager.Instance.bulletSpeed = GameManager.Instance.bulletSpeed / 2f;
+    }
+    #endregion Upgrade BigBullets
 }

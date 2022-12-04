@@ -17,13 +17,14 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        //speed = speed;  ??
+        speed = GameManager.Instance.bulletSpeed;
+        atkDmg = GameManager.Instance.bulletDamage;
         timeStart = Time.time;
         player = GameObject.Find("Dale");
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(transform.right * speed);
         PushBack();
-        transform.localScale = new Vector3(5f,5f,5f);
+        transform.localScale = GameManager.Instance.bulletSize;
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
     }
 
@@ -69,9 +70,9 @@ public class Bullet : MonoBehaviour
     }
 
     public void UpgradeBulletSpeed(float val) {
-        speed += val;
+        GameManager.Instance.bulletSpeed += val;
     }
     public void UpgradeBulletDamage(float val) {
-        atkDmg += val;
+        GameManager.Instance.bulletDamage += val;
     }
 }

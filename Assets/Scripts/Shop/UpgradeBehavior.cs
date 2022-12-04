@@ -252,4 +252,15 @@ public class UpgradeBehavior : MonoBehaviour
     }
     #endregion Purchase Double Jump
 
+    #region Purchase Split Shot
+    public void PurchaseSplitShot() {
+        if (GameManager.Instance.potatoes >= 13)
+        {
+            GameManager.Instance.potatoes -= 13;
+            upgradeController.UpgradeSplitShot();
+            this.transform.GetChild(1).gameObject.SetActive(false);
+        }
+    }
+    #endregion Purchase Double Jump
+
 }

@@ -157,10 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c228cab74f575945aca65e7e350a46f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 250
+  speed: 300
   timeElasped: 0
   atkDmg: 10
   dieEffect: {fileID: 7558981753747330517, guid: 2fc2b86ee12e9cf469932a1dcc6b1eeb, type: 3}
-  knockback: 2
+  knockback: 1.5
   branch: {fileID: 0}
   percentX: 0.75

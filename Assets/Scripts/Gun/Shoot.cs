@@ -35,7 +35,14 @@ public class Shoot : MonoBehaviour
         if(Input.GetButton("Fire1") && !isShooting && meterValue > 0 && canFire) 
         {
             GetComponent<AudioSource>().Play();
-            StartCoroutine(ShootB());
+            if (!GameManager.Instance.splitShot)
+            {
+                StartCoroutine(ShootB());
+            }
+            else
+            {
+                StartCoroutine(ShootSplit());
+            }
         }
         else if (meterValue < maxMeterValue && !refilling && !Input.GetButton("Fire1"))
         {
@@ -50,21 +57,21 @@ public class Shoot : MonoBehaviour
         isShooting = true;
         --meterValue;
         //poisonMeter.SetMeter(--meterValue);
-        GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation * new Quaternion(0,0,-0.25f,1));
+        GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation);
         Debug.Log(bulletLoc.transform.rotation);
-        GameObject c = Instantiate(bullet, bulletLoc.transform.position + new Vector3(0f,0,0), bulletLoc.transform.rotation * new Quaternion(0,0,0.25f,1));
+        GameObject c = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation);
         yield return new WaitForSeconds(shootTimer);
         isShooting = false;
     }
 
-    IEnumerator ShootC()
+    IEnumerator ShootSplit()
     {
         isShooting = true;
         --meterValue;
         //poisonMeter.SetMeter(--meterValue);
-        GameObject b = Instantiate(bullet, bulletLoc.transform.position + new Vector3(-0.1f,0,0), bulletLoc.transform.rotation);
+        GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation * new Quaternion(0,0,0.25f,1));
         Debug.Log(bulletLoc.transform.rotation);
-        GameObject c = Instantiate(bullet, bulletLoc.transform.position + new Vector3(0.1f,0,0), bulletLoc.transform.rotation);
+        GameObject c = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation * new Quaternion(0,0,-0.25f,1));
         yield return new WaitForSeconds(shootTimer);
         isShooting = false;
     }

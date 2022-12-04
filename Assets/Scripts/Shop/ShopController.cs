@@ -104,6 +104,16 @@ public class ShopController : MonoBehaviour
         }
     }
 
+    public void RemoveSplitShot()
+    {
+        epicUpgrades.RemoveAt(0);
+    }
+
+    public void Reroll()
+    {
+        PopulateShop();
+    }
+
     public void ChangeOdds(float day)
     {
         if (day == 1)

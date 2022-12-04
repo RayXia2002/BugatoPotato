@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
     public float rareUpgradeRate { get; set; }
     public float epicUpgradeRate { get; set; }
 
+    //bullet variables
+    public Vector3 bulletSize;
+    public float bulletSpeed;
+    public float bulletDamage;
+    public bool splitShot;
     
     public DayNightController dnc;
     public ShopController sc;

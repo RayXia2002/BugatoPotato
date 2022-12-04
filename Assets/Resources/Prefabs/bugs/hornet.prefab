@@ -122,9 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.6
-  dashSpeed: 3
-  dashingTime: 0.2
-  dashingCooldown: 1
+  dashSpeed: 0.75
+  dashingTime: 0.75
+  dashingCooldown: 3
   atkDmg: 1
   playerAtkDmg: 1
   bullet: {fileID: 5106022476500582359, guid: ba166f779fa9d254496e2b001def6a5e, type: 3}

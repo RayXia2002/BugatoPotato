@@ -5,8 +5,8 @@ using UnityEngine;
 public class HornetBehavior : MonoBehaviour, IDamageable
 {
     public float speed = 0.6f;
-    public float dashSpeed = 3.0f;
-    public float dashingTime = 3f;
+    public float dashSpeed = 0.75f;
+    public float dashingTime = 0.75f;
     public float dashingCooldown = 4.0f;
     private GameObject dale;
     private bool isDash = false, canDash = true;
@@ -40,7 +40,7 @@ public class HornetBehavior : MonoBehaviour, IDamageable
 
         // get distance between dale and hornet
         float dist = Vector3.Distance(dale.transform.position, this.transform.position);
-        if (dist <= 1.0f) {
+        if (dist <= 1.0f && canDash) {
             StartCoroutine(Dash());
         }
         else if (moving) {
@@ -62,42 +62,25 @@ public class HornetBehavior : MonoBehaviour, IDamageable
                 transform.localScale = origScale;
             }
         }
-
-
-        // old code
-        // // if time to attack
-        // if (attk && (Time.time - lastAtk >= atkSpd)) {
-        //     // update last attack time
-        //     lastAtk = Time.time;
-
-        //     // flash red before attack, stop moving for this
-        //     moving = false;
-        //     StartCoroutine(Flash());
-
-        //     moving = true;
-            
-
-        //     // end attack
-        //     attk = false;
-
-        //     // start cooldown
-        //     StartCoroutine(PauseMove());
-        // }
     }
 
+    // function that makes the hornet dash depending on dashingTime
     private IEnumerator Dash() {
         
+        float timePassed= 0;
         canDash = false;
-        isDash = true;
-        transform.position += dashSpeed * direction * Time.smoothDeltaTime;
-        StartCoroutine(Flash());
-        // pause all movement while dashing
-        yield return new WaitForSeconds(dashingTime);
-        isDash = false;
-        // start cooldown of dash
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
+        while (timePassed < dashingTime)
+        {
+            spriteRenderer.color = Color.red;
+            transform.position += dashSpeed * direction * Time.smoothDeltaTime;
+            timePassed += Time.smoothDeltaTime;
+            Debug.Log(timePassed);
+            yield return null;
+        }
+        spriteRenderer.color = Color.white;
+        StartCoroutine(DashingCooldown());
     }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "bullet" && health <= 0) {
@@ -160,6 +143,12 @@ public class HornetBehavior : MonoBehaviour, IDamageable
         moving = false;
         yield return new WaitForSeconds(1.0f);
         moving = true;
+    }
+
+    // dashing cooldown 
+    private IEnumerator DashingCooldown() {
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 
 }

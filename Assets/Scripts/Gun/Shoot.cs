@@ -50,7 +50,21 @@ public class Shoot : MonoBehaviour
         isShooting = true;
         --meterValue;
         //poisonMeter.SetMeter(--meterValue);
-        GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation);
+        GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation * new Quaternion(0,0,-0.25f,1));
+        Debug.Log(bulletLoc.transform.rotation);
+        GameObject c = Instantiate(bullet, bulletLoc.transform.position + new Vector3(0f,0,0), bulletLoc.transform.rotation * new Quaternion(0,0,0.25f,1));
+        yield return new WaitForSeconds(shootTimer);
+        isShooting = false;
+    }
+
+    IEnumerator ShootC()
+    {
+        isShooting = true;
+        --meterValue;
+        //poisonMeter.SetMeter(--meterValue);
+        GameObject b = Instantiate(bullet, bulletLoc.transform.position + new Vector3(-0.1f,0,0), bulletLoc.transform.rotation);
+        Debug.Log(bulletLoc.transform.rotation);
+        GameObject c = Instantiate(bullet, bulletLoc.transform.position + new Vector3(0.1f,0,0), bulletLoc.transform.rotation);
         yield return new WaitForSeconds(shootTimer);
         isShooting = false;
     }

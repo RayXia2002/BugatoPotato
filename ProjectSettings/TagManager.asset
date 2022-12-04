@@ -9,6 +9,7 @@ TagManager:
   - stem
   - bug
   - bullet
+  - warning
   layers:
   - Default
   - TransparentFX

@@ -115,6 +115,7 @@ public class UpgradeController : MonoBehaviour
     #region Upgrade Double Jump
     public void UpgradeDoubleJump() {
         playerMovement.UpgradeDoubleJump();
+        shopController.RemoveDoubleJump();
     }
     #endregion Upgrade Double Jump
     

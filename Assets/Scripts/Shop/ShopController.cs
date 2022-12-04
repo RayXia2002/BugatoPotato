@@ -109,6 +109,11 @@ public class ShopController : MonoBehaviour
         epicUpgrades.RemoveAt(0);
     }
 
+    public void RemoveDoubleJump()
+    {
+        epicUpgrades.RemoveAt(1);
+    }
+
     public void Reroll()
     {
         PopulateShop();

@@ -198,4 +198,17 @@ public class GameManager : MonoBehaviour
     {
         bs.spawn = false;
     }
+
+    public void UpgradePlantHealth(float val) {
+        plantMaxHealth += val;
+        plantHealth += val;
+    }
+
+    public void UpgradePlayerHealth(int val) {
+        playerMaxHealth += val;
+    }
+
+    public void UpgradePotatoOutput(int val) {
+        extraPotatoes += val;
+    }
 }

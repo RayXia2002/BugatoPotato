@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float characterSpeed = 1f;
     public float characterJumpSpeed = 5f;
-    private bool isJumping = false;
+    private int jumps = 0;
     private Rigidbody2D rb;
     public Animator animator;
 
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float rampUpTime;
     public float rampDownTime;
     private bool direction;
-
+    private bool upgradedDoubleJump = false;
     private float percentLeft;
     // Start is called before the first frame update
     void Start()
@@ -32,9 +32,10 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayerControl() {
         animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * characterSpeed));
-        if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && !isJumping && rb.velocity.y <= 0.1f) {
+        if ((Input.GetKeyDown("space") || Input.GetKeyDown("w")) && CanJump()) {
             rb.velocity = new Vector3(rb.velocity.x, characterJumpSpeed, 0);
-            isJumping = true;
+            Debug.Log("jump");
+            jumps++;
         }
         if (Input.GetKey("a")) {
             direction = true;
@@ -53,9 +54,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // checks all conditions if dale can jump
+    private bool CanJump() {
+        // return true if double jump is enabled and dale has jumped less than 2 times
+        if (upgradedDoubleJump && jumps < 2) {
+            return true;
+        }
+        else if (jumps == 0 && rb.velocity.y <= 0.1f) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("OneWayPlatform")) {
-            isJumping = false;
+        if ((other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("OneWayPlatform")) && rb.velocity.y <= 0.1f) {
+            jumps = 0;
         }
     }
 
@@ -110,7 +124,12 @@ public class PlayerMovement : MonoBehaviour
         yield return null;
     }
 
+    #region Player Upgrades
     public void UpgradePlayerSpeed(float val) {
         characterSpeed += val;
     }
+    public void UpgradeDoubleJump() {
+        upgradedDoubleJump = true;
+    }
+    #endregion Player Upgrades
 }

@@ -9,9 +9,8 @@ public class HornetBehavior : MonoBehaviour, IDamageable
     public float dashingTime = 0.75f;
     public float dashingCooldown = 4.0f;
     private GameObject dale;
-    private bool isDash = false, canDash = true;
+    private bool canDash = true;
     private float lastAtk;
-    private float atkSpd = 4f;
     private bool moving = true;
     public float atkDmg = 1f;
     public float playerAtkDmg = 1f;

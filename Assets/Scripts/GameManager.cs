@@ -49,6 +49,12 @@ public class GameManager : MonoBehaviour
     public float bulletSpeed;
     public float bulletDamage;
     public bool splitShot;
+
+    //bug variables
+    public float bugHealthCater;
+    public float bugHealthBeatle;
+    public float bugHealthFly;
+    public float bugHealthHornet;
     
     public DayNightController dnc;
     public ShopController sc;

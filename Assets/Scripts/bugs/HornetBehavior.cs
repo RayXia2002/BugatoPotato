@@ -25,7 +25,7 @@ public class HornetBehavior : MonoBehaviour, IDamageable
     void Start()
     {
         dale = GameObject.Find("Dale");
-        health = 20f;
+        health = GameManager.Instance.bugHealthHornet;
         col = this.gameObject.GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();

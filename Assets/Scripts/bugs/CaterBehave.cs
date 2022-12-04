@@ -20,7 +20,7 @@ public class CaterBehave : MonoBehaviour, IDamageable
 
     void Start()
     {
-        health = 10f;
+        health = GameManager.Instance.bugHealthCater;
         col = this.gameObject.GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }

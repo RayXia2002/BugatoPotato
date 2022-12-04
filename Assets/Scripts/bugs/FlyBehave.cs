@@ -19,7 +19,7 @@ public class FlyBehave : MonoBehaviour, IDamageable
 
     void Start()
     {
-        health = 20f;
+        health = GameManager.Instance.bugHealthFly;
         col = this.gameObject.GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }

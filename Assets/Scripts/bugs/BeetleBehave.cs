@@ -19,7 +19,7 @@ public class BeetleBehave : MonoBehaviour, IDamageable
 
     void Start()
     {
-        health = 30f;
+        health = GameManager.Instance.bugHealthBeatle;
         col = this.gameObject.GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }

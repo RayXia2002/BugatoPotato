@@ -66,7 +66,7 @@ public class UpgradeController : MonoBehaviour
 
     #region Upgrade Bullet Damage
     public void UpgradeBulletDamage1() {
-        bullet.UpgradeBulletDamage(2f);
+        bullet.UpgradeBulletDamage(2.5f);
     }
     public void UpgradeBulletDamage2() {
         bullet.UpgradeBulletDamage(5f);
@@ -77,26 +77,14 @@ public class UpgradeController : MonoBehaviour
     #endregion Upgrade Bullet Damage
     
     #region Upgrade Plant Health
-    public void UpgradePlantHealth1() {
-        gameManager.UpgradePlantHealth(2f);
-    }
-    public void UpgradePlantHealth2() {
-        gameManager.UpgradePlantHealth(4f);
-    }
-    public void UpgradePlantHealth3() {
+    public void UpgradePlantHealth() {
         gameManager.UpgradePlantHealth(10f);
     }
     #endregion Upgrade Plant Health
     
     #region Upgrade Player Health
-    public void UpgradePlayerHealth1() {
+    public void UpgradePlayerHealth() {
         gameManager.UpgradePlayerHealth(1);
-    }
-    public void UpgradePlayerHealth2() {
-        gameManager.UpgradePlayerHealth(2);
-    }
-    public void UpgradePlayerHealth3() {
-        gameManager.UpgradePlayerHealth(3);
     }
     #endregion Upgrade Player Health
 

@@ -161,81 +161,33 @@ public class UpgradeBehavior : MonoBehaviour
     #endregion Purchase Bullet Damage
 
     #region Purchase Plant Health
-    public void PurchasePlantHealth1() {
-        if (GameManager.Instance.potatoes >= 5)
-        {
-            GameManager.Instance.potatoes -= 5;
-            upgradeController.UpgradePlantHealth1();
-            this.transform.GetChild(1).gameObject.SetActive(false);
-        }
-    }
-    public void PurchasePlantHealth2() {
+    public void PurchasePlantHealth() {
         if (GameManager.Instance.potatoes >= 8)
         {
             GameManager.Instance.potatoes -= 8;
-            upgradeController.UpgradePlantHealth2();
-            this.transform.GetChild(1).gameObject.SetActive(false);
-        }
-    }
-    public void PurchasePlantHealth3() {
-        if (GameManager.Instance.potatoes >= 13)
-        {
-            GameManager.Instance.potatoes -= 13;
-            upgradeController.UpgradePlantHealth3();
+            upgradeController.UpgradePlantHealth();
             this.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
     #endregion Purchase Plant Health
 
     #region Purchase Player Health
-    public void PurchasePlayerHealth1() {
-        if (GameManager.Instance.potatoes >= 5)
-        {
-            GameManager.Instance.potatoes -= 5;
-            upgradeController.UpgradePlayerHealth1();
-            this.transform.GetChild(1).gameObject.SetActive(false);
-        }
-    }
-    public void PurchasePlayerHealth2() {
+    public void PurchasePlayerHealth() {
         if (GameManager.Instance.potatoes >= 8)
         {
             GameManager.Instance.potatoes -= 8;
-            upgradeController.UpgradePlayerHealth2();
-            this.transform.GetChild(1).gameObject.SetActive(false);
-        }
-    }
-    public void PurchasePlayerHealth3() {
-        if (GameManager.Instance.potatoes >= 13)
-        {
-            GameManager.Instance.potatoes -= 13;
-            upgradeController.UpgradePlayerHealth3();
+            upgradeController.UpgradePlayerHealth();
             this.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
     #endregion Purchase Player Health
 
     #region Purchase Potato Output
-    public void PurchasePotatoOutput1() {
-        if (GameManager.Instance.potatoes >= 5)
-        {
-            GameManager.Instance.potatoes -= 5;
-            upgradeController.UpgradePotatoOutput1();
-            this.transform.GetChild(1).gameObject.SetActive(false);
-        }
-    }
-    public void PurchasePotatoOutput2() {
+    public void PurchasePotatoOutput() {
         if (GameManager.Instance.potatoes >= 8)
         {
             GameManager.Instance.potatoes -= 8;
-            upgradeController.UpgradePotatoOutput2();
-            this.transform.GetChild(1).gameObject.SetActive(false);
-        }
-    }
-    public void PurchasePotatoOutput3() {
-        if (GameManager.Instance.potatoes >= 13)
-        {
-            GameManager.Instance.potatoes -= 13;
-            upgradeController.UpgradePotatoOutput3();
+            upgradeController.UpgradePotatoOutput();
             this.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
@@ -261,6 +213,6 @@ public class UpgradeBehavior : MonoBehaviour
             this.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
-    #endregion Purchase Double Jump
+    #endregion Purchase Split Shot
 
 }

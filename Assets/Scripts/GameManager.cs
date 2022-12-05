@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
     public GameObject dale;
     public GameObject bulletSpawner;
     public GameObject pauseScreen;
+    public GameObject levelLoader;
     
     public float bugsOnScreen;
     public bool firstDay = true;
@@ -116,6 +117,7 @@ public class GameManager : MonoBehaviour
     }
     void Awake()
     {
+        StartCoroutine(LevelLoader());
         day = 1;
         extraPotatoes += 5f;
         plantHealth = 10f;
@@ -138,6 +140,10 @@ public class GameManager : MonoBehaviour
 
     public void SetUp()
     {
+        bs.lastSpawnCater = Time.time + 0.1f;
+        bs.lastSpawnBeetle = Time.time + 0.1f;
+        bs.lastSpawnFly = Time.time + 1.75f;
+        bs.lastSpawnHornet = Time.time + 2f;
         shoot.meterValue = shoot.maxMeterValue;
         pb.healthHearts.SetHearts(6, 3);
         pb.health = 6;
@@ -168,7 +174,7 @@ public class GameManager : MonoBehaviour
         epicUpgradeRate = 0f;
         flyBehavior.speed = 0.75f;
         beetleBehavior.speed = 0.4f;
-        caterBehavior.speed = 1.5f;
+        caterBehavior.speed = 1.2f;
         
         shoot.canFire = true;
         dnc.dayIdle = false;
@@ -211,6 +217,12 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+    }
+
+    IEnumerator LevelLoader()
+    {
+        yield return new WaitForSeconds(1f);
+        levelLoader.SetActive(false);
     }
 
     private void TutorialPause()

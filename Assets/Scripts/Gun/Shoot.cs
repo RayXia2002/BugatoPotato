@@ -35,7 +35,7 @@ public class Shoot : MonoBehaviour
     {
         if(Input.GetButton("Fire1") && !isShooting && meterValue > 0 && canFire) 
         {
-            GetComponent<AudioSource>().Play();
+        
             if (!GameManager.Instance.splitShot)
             {
                 StartCoroutine(ShootB());
@@ -57,7 +57,7 @@ public class Shoot : MonoBehaviour
             warningActive = true;
             warnScript.Activate();
         }
-        if (warningActive && currentMeterValue > 3) {
+        if (warningActive && currentMeterValue > 1) {
             warningActive = false;
             warnScript.Deactivate();
         }
@@ -68,7 +68,6 @@ public class Shoot : MonoBehaviour
         --meterValue;
         //poisonMeter.SetMeter(--meterValue);
         GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation);
-        GameObject c = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation);
         yield return new WaitForSeconds(shootTimer);
         isShooting = false;
     }
@@ -77,8 +76,8 @@ public class Shoot : MonoBehaviour
         isShooting = true;
         --meterValue;
         //poisonMeter.SetMeter(--meterValue);
-        GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation * new Quaternion(0,0,0.25f,1));
-        GameObject c = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation * new Quaternion(0,0,-0.25f,1));
+        GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation * new Quaternion(0,0,0.1f,1));
+        GameObject c = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation * new Quaternion(0,0,-0.1f,1));
         yield return new WaitForSeconds(shootTimer);
         isShooting = false;
     }

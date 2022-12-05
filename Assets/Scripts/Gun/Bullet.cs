@@ -14,9 +14,10 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject branch;
     public float percentX;
-
+    public GameObject bulletSoundMaker;
     void Start()
     {
+        bulletSoundMaker = GameObject.Find("BulletSoundMaker");
         speed = GameManager.Instance.bulletSpeed;
         atkDmg = GameManager.Instance.bulletDamage;
         timeStart = Time.time;
@@ -38,16 +39,18 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         string tag = other.gameObject.tag;
-
         if (tag == "Ground" || tag == "bug")
         {
+            
             if (tag == "bug")
             {
                 IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
                 damageable.OnHit(atkDmg);
+                Debug.Log(atkDmg);
             }
             if (dieEffect != null)
             {
+                bulletSoundMaker.GetComponent<AudioSource>().Play();
                 Instantiate(dieEffect, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);

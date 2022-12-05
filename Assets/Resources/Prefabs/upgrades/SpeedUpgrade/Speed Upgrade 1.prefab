@@ -1240,4 +1240,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeController: {fileID: 0}
+  purchaseSound: {fileID: 0}
   rarity: 0

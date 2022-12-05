@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayAgainButton : MonoBehaviour
 {
+    public GameObject levelLoader;
+    void Awake()
+    {
+        levelLoader.SetActive(false);
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);

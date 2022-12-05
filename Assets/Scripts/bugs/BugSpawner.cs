@@ -16,19 +16,19 @@ public class BugSpawner : MonoBehaviour
     public float spawnBeetleRate = 3f;
     public float spawnFlyRate = 3f;
     public float spawnHornetRate = 3f;
-    private float lastSpawn = 0f;
-    private float lastSpawnCater = 0.1f;
-    private float lastSpawnBeetle = 3f;
-    private float lastSpawnFly = 3f;
-    private float lastSpawnHornet = 3f;
+    public float lastSpawn = 0f;
+    public float lastSpawnCater = 0.1f;
+    public float lastSpawnBeetle = 6f;
+    public float lastSpawnFly = 6.75f;
+    public float lastSpawnHornet = 7f;
     public bool spawn = false;
     public bool pause = false;
 
     // min max for spawning
     private const float X_MIN = -4.7f;
     private const float X_MAX = 4.7f;
-    private const float BEET_Y_VAL = -1.6f;
-    private const float CAT_Y_VAL = -1.67f;
+    private const float BEET_Y_VAL = -1.717f;
+    private const float CAT_Y_VAL = -1.717f;
 
     // Update is called once per frame
     void Update()
@@ -48,6 +48,8 @@ public class BugSpawner : MonoBehaviour
         if ((Time.time - lastSpawnFly >= spawnRate * spawnFlyRate) && spawn && !pause && GameManager.Instance.day >= 3) 
         {
             spawnFly();
+            Debug.Log(lastSpawnFly);
+            Debug.Log(Time.time);
             lastSpawnFly = Time.time;
         }
 

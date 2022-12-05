@@ -6,11 +6,13 @@ public class UpgradeBehavior : MonoBehaviour
 {
     //public UpgradeController upgradeController;
     public UpgradeController upgradeController;
+    public GameObject purchaseSound;
     public float rarity;
 
     void Start()
     {
         upgradeController = GameObject.FindObjectOfType<UpgradeController>();
+        purchaseSound = GameObject.Find("PurchaseSound");
     }
 
     #region Purchase Speed
@@ -18,6 +20,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes >= 5)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes  -= 5;
             upgradeController.UpgradePlayerSpeed1(); 
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -27,6 +30,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes >= 8)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes  -= 8;
             upgradeController.UpgradePlayerSpeed2(); 
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -36,6 +40,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes >= 13)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes  -= 13;
             upgradeController.UpgradePlayerSpeed3(); 
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -48,6 +53,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes  >= 5)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 5;
             upgradeController.UpgradeRefillTimer1();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -57,6 +63,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes  >= 8)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 8;
             upgradeController.UpgradeRefillTimer2();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -66,6 +73,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes  >= 13)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 13;
             upgradeController.UpgradeRefillTimer3();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -78,6 +86,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes  >= 5)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 5;
             upgradeController.UpgradeFireRate1();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -87,6 +96,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes  >= 8)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 8;
             upgradeController.UpgradeFireRate2();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -96,6 +106,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes  >= 13)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 13;
             upgradeController.UpgradeFireRate3();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -108,6 +119,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes  >= 5)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 5;
             upgradeController.UpgradeBulletSpeed1();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -117,6 +129,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes  >= 8)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 8;
             upgradeController.UpgradeBulletSpeed2();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -126,6 +139,7 @@ public class UpgradeBehavior : MonoBehaviour
     {
         if (GameManager.Instance.potatoes  >= 13)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 13;
             upgradeController.UpgradeBulletSpeed3();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -137,6 +151,7 @@ public class UpgradeBehavior : MonoBehaviour
     public void PurchaseBulletDamage1() {
         if (GameManager.Instance.potatoes >= 5)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 5;
             upgradeController.UpgradeBulletDamage1();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -145,6 +160,7 @@ public class UpgradeBehavior : MonoBehaviour
     public void PurchaseBulletDamage2() {
         if (GameManager.Instance.potatoes >= 8)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 8;
             upgradeController.UpgradeBulletDamage2();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -153,6 +169,7 @@ public class UpgradeBehavior : MonoBehaviour
     public void PurchaseBulletDamage3() {
         if (GameManager.Instance.potatoes >= 13)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 13;
             upgradeController.UpgradeBulletDamage3();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -164,6 +181,7 @@ public class UpgradeBehavior : MonoBehaviour
     public void PurchasePlantHealth() {
         if (GameManager.Instance.potatoes >= 8)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 8;
             upgradeController.UpgradePlantHealth();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -175,6 +193,7 @@ public class UpgradeBehavior : MonoBehaviour
     public void PurchasePlayerHealth() {
         if (GameManager.Instance.potatoes >= 8)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 8;
             upgradeController.UpgradePlayerHealth();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -186,6 +205,7 @@ public class UpgradeBehavior : MonoBehaviour
     public void PurchasePotatoOutput() {
         if (GameManager.Instance.potatoes >= 8)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 8;
             upgradeController.UpgradePotatoOutput();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -197,6 +217,7 @@ public class UpgradeBehavior : MonoBehaviour
     public void PurchaseDoubleJump() {
         if (GameManager.Instance.potatoes >= 13)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 13;
             upgradeController.UpgradeDoubleJump();
             this.transform.GetChild(1).gameObject.SetActive(false);
@@ -208,6 +229,7 @@ public class UpgradeBehavior : MonoBehaviour
     public void PurchaseSplitShot() {
         if (GameManager.Instance.potatoes >= 13)
         {
+            purchaseSound.GetComponent<AudioSource>().Play();
             GameManager.Instance.potatoes -= 13;
             upgradeController.UpgradeSplitShot();
             this.transform.GetChild(1).gameObject.SetActive(false);

@@ -89,14 +89,8 @@ public class UpgradeController : MonoBehaviour
     #endregion Upgrade Player Health
 
     #region Upgrade Potato Output
-    public void UpgradePotatoOutput1() {
-        gameManager.UpgradePotatoOutput(2);
-    }
-    public void UpgradePotatoOutput2() {
-        gameManager.UpgradePotatoOutput(4);
-    }
-    public void UpgradePotatoOutput3() {
-        gameManager.UpgradePotatoOutput(7);
+    public void UpgradePotatoOutput() {
+        gameManager.UpgradePotatoOutput(5);
     }
     #endregion Upgrade Potato Output
 

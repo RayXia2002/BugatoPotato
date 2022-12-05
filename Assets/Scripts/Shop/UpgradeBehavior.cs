@@ -183,27 +183,11 @@ public class UpgradeBehavior : MonoBehaviour
     #endregion Purchase Player Health
 
     #region Purchase Potato Output
-    public void PurchasePotatoOutput1() {
-        if (GameManager.Instance.potatoes >= 5)
-        {
-            GameManager.Instance.potatoes -= 5;
-            upgradeController.UpgradePotatoOutput1();
-            this.transform.GetChild(1).gameObject.SetActive(false);
-        }
-    }
-    public void PurchasePotatoOutput2() {
+    public void PurchasePotatoOutput() {
         if (GameManager.Instance.potatoes >= 8)
         {
             GameManager.Instance.potatoes -= 8;
-            upgradeController.UpgradePotatoOutput2();
-            this.transform.GetChild(1).gameObject.SetActive(false);
-        }
-    }
-    public void PurchasePotatoOutput3() {
-        if (GameManager.Instance.potatoes >= 13)
-        {
-            GameManager.Instance.potatoes -= 13;
-            upgradeController.UpgradePotatoOutput3();
+            upgradeController.UpgradePotatoOutput();
             this.transform.GetChild(1).gameObject.SetActive(false);
         }
     }

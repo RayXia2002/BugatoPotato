@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1acff7da059c18e40b174d362d95a834
+guid: 8f874c65aa6c8a04588955cad76574b5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dmgUpgrade_0
+      name: toxic_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 547530df3806d2e449d3f77b7a5b3571
-      internalID: 1132933649
+      spriteID: bc094009e43f04f4abcaa19a30cb322a
+      internalID: -1319250744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dmgUpgrade_1
+      name: toxic_1
       rect:
         serializedVersion: 2
         x: 54
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c8beef15a3ac884a9c0d59a0d323832
-      internalID: -2053583185
+      spriteID: d7c98f69fc8830f41b82e81553edf1b5
+      internalID: -1196040106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dmgUpgrade_2
+      name: toxic_2
       rect:
         serializedVersion: 2
         x: 0
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5da3d42f691cbf649b62e353541743e6
-      internalID: -48819457
+      spriteID: 1de34420b7e23984d9990769a37be47b
+      internalID: -1416752211
       vertices: []
       indices: 
       edges: []
@@ -190,9 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dmgUpgrade_2: -48819457
-      dmgUpgrade_0: 1132933649
-      dmgUpgrade_1: -2053583185
+      toxic_2: -1416752211
+      toxic_0: -1319250744
+      toxic_1: -1196040106
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

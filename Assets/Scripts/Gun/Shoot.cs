@@ -58,7 +58,6 @@ public class Shoot : MonoBehaviour
         --meterValue;
         //poisonMeter.SetMeter(--meterValue);
         GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation);
-        Debug.Log(bulletLoc.transform.rotation);
         GameObject c = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation);
         yield return new WaitForSeconds(shootTimer);
         isShooting = false;
@@ -70,7 +69,6 @@ public class Shoot : MonoBehaviour
         --meterValue;
         //poisonMeter.SetMeter(--meterValue);
         GameObject b = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation * new Quaternion(0,0,0.25f,1));
-        Debug.Log(bulletLoc.transform.rotation);
         GameObject c = Instantiate(bullet, bulletLoc.transform.position, bulletLoc.transform.rotation * new Quaternion(0,0,-0.25f,1));
         yield return new WaitForSeconds(shootTimer);
         isShooting = false;

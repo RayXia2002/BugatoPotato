@@ -91,27 +91,10 @@ public class GameManager : MonoBehaviour
         if (dnc.dayIdle == true && !firstDay && !setUp)
         {
             if (dnc.numOfDays <= 11){
-                bs.spawnRate -= (0.03f * dnc.numOfDays);
-                flyBehavior.speed += (0.009f * dnc.numOfDays);
-                caterBehavior.speed += (0.009f * dnc.numOfDays);
-                beetleBehavior.speed += (0.009f * dnc.numOfDays);   
+                ScaleBugs();
             }
             
-    
-            plantChange = true;
-            shoot.meterValue = shoot.maxMeterValue;
-            pb.healthHearts.SetHearts(6, 3);
-            pb.health = 6;
-            dnc.lengthOfCycle = 0.015f;
-            dnc.nightTime = false;
-            bs.spawn = false;
-            sc.OpenShop();
-            //dale.SetActive(false);
-            Time.timeScale = 0;
-            tutorialHUD.SetActive(false);
-            shoot.canFire = false;
-            setUp = true;
-            //dnc.dayStatus.SetPotatoRate(extraPotatoes);
+            SetUp();
         }
         if (dnc.time > 0.65f)
         {
@@ -151,6 +134,31 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         shoot.canFire = true;
         bs.spawn = true;
+    }
+
+    public void SetUp()
+    {
+        shoot.meterValue = shoot.maxMeterValue;
+        pb.healthHearts.SetHearts(6, 3);
+        pb.health = 6;
+        dnc.lengthOfCycle = 0.015f;
+        plantChange = true;
+        dnc.nightTime = false;
+        bs.spawn = false;
+        sc.OpenShop();
+        Time.timeScale = 0;
+        tutorialHUD.SetActive(false);
+        shoot.canFire = false;
+        setUp = true;
+    }
+
+    //function to scale the bug values each day
+    public void ScaleBugs()
+    {
+        bs.spawnRate -= (0.03f * dnc.numOfDays);
+        flyBehavior.speed += (0.009f * dnc.numOfDays);
+        caterBehavior.speed += (0.009f * dnc.numOfDays);
+        beetleBehavior.speed += (0.009f * dnc.numOfDays);           
     }
 
     public void StartFirstDay()

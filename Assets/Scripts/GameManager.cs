@@ -145,9 +145,9 @@ public class GameManager : MonoBehaviour
         bs.lastSpawnFly = Time.time + 1.75f;
         bs.lastSpawnHornet = Time.time + 2f;
         shoot.meterValue = shoot.maxMeterValue;
-        pb.healthHearts.SetHearts(6, 3);
-        pb.health = 6;
-        dnc.lengthOfCycle = 0.015f;
+        pb.healthHearts.SetHearts(pb.maxHearts * 2f, pb.maxHearts);
+        pb.health = pb.maxHearts * 2f;
+        dnc.lengthOfCycle = 0.023f;
         plantChange = true;
         dnc.nightTime = false;
         bs.spawn = false;
@@ -161,10 +161,14 @@ public class GameManager : MonoBehaviour
     //function to scale the bug values each day
     public void ScaleBugs()
     {
-        bs.spawnRate -= (0.03f * dnc.numOfDays);
+        bs.spawnRate -= (0.02f * dnc.numOfDays);
         flyBehavior.speed += (0.009f * dnc.numOfDays);
         caterBehavior.speed += (0.009f * dnc.numOfDays);
-        beetleBehavior.speed += (0.009f * dnc.numOfDays);           
+        beetleBehavior.speed += (0.009f * dnc.numOfDays);   
+        bugHealthCater += 1f;
+        bugHealthBeatle += 1f;
+        bugHealthFly += 1f;
+        bugHealthHornet += 1f;        
     }
 
     public void StartFirstDay()
@@ -173,8 +177,8 @@ public class GameManager : MonoBehaviour
         rareUpgradeRate = 0f;
         epicUpgradeRate = 0f;
         flyBehavior.speed = 0.75f;
-        beetleBehavior.speed = 0.4f;
-        caterBehavior.speed = 1.2f;
+        beetleBehavior.speed = 0.45f;
+        caterBehavior.speed = 1.5f;
         
         shoot.canFire = true;
         dnc.dayIdle = false;
@@ -236,7 +240,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpgradePlayerHealth(int val) {
-        playerMaxHealth += val;
+        pb.maxHearts += val;
+        pb.healthHearts.SetHearts(pb.maxHearts * 2f, pb.maxHearts);
     }
 
     public void UpgradePotatoOutput(int val) {

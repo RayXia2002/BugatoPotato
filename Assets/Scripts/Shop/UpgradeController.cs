@@ -54,25 +54,25 @@ public class UpgradeController : MonoBehaviour
 
     #region Upgrade Refill Timer
     public void UpgradeRefillTimer1() {
-        shoot.UpgradeRefillTimer(0.1f);
+        shoot.UpgradeRefillTimer(0.05f);
     }
     public void UpgradeRefillTimer2() {
-        shoot.UpgradeRefillTimer(0.2f);
+        shoot.UpgradeRefillTimer(0.075f);
     }
     public void UpgradeRefillTimer3() {
-        shoot.UpgradeRefillTimer(0.3f);
+        shoot.UpgradeRefillTimer(0.15f);
     }
     #endregion Upgrade Refill Timer
 
     #region Upgrade Bullet Damage
     public void UpgradeBulletDamage1() {
-        bullet.UpgradeBulletDamage(2.5f);
+        bullet.UpgradeBulletDamage(3f);
     }
     public void UpgradeBulletDamage2() {
         bullet.UpgradeBulletDamage(5f);
     }
     public void UpgradeBulletDamage3() {
-        bullet.UpgradeBulletDamage(10f);
+        bullet.UpgradeBulletDamage(8f);
     }
     #endregion Upgrade Bullet Damage
     
@@ -85,6 +85,7 @@ public class UpgradeController : MonoBehaviour
     #region Upgrade Player Health
     public void UpgradePlayerHealth() {
         gameManager.UpgradePlayerHealth(1);
+        shopController.RemoveDalesHeart();
     }
     #endregion Upgrade Player Health
 

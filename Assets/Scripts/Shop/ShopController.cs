@@ -12,6 +12,7 @@ public class ShopController : MonoBehaviour
     public TextMeshProUGUI potatoRate;
     public UpgradeController upgradeController;
     public GameObject storeUI;
+    public GameObject rerollButton;
     public List<GameObject> allUpgrades;
     public List<GameObject> commonUpgrades;
     public List<GameObject> rareUpgrades;
@@ -114,9 +115,15 @@ public class ShopController : MonoBehaviour
         epicUpgrades.RemoveAt(1);
     }
 
+    public void RemoveDalesHeart()
+    {
+        epicUpgrades.RemoveAt(2);
+    }
+
     public void Reroll()
     {
         PopulateShop();
+        rerollButton.SetActive(false);
     }
 
     public void ChangeOdds(float day)
@@ -172,6 +179,7 @@ public class ShopController : MonoBehaviour
     public void OpenShop()
     {
         storeUI.SetActive(true);
+        rerollButton.SetActive(true);
         PopulateShop();
     }
 }

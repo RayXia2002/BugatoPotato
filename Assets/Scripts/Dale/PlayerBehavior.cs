@@ -22,16 +22,6 @@ public class PlayerBehavior : MonoBehaviour, IDamageable
         originalMaterial = spriteRenderer.material;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("y")) 
-        {
-            health = 6;
-            healthHearts.SetHearts(health, maxHearts);
-        }
-    }
-
     public void OnHit(float damage)
     {
         if (!invincible)

@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.1868324, y: 45.54003}
-  m_SizeDelta: {x: 38.9481, y: 8.632}
+  m_AnchoredPosition: {x: 2.2, y: 47.24}
+  m_SizeDelta: {x: 24.6103, y: 6.5838}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1094389327448397398
 CanvasRenderer:
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5.5
-  m_fontSizeBase: 5.5
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -930,6 +930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeController: {fileID: 0}
+  purchaseSound: {fileID: 0}
   rarity: 0
 --- !u!1 &1094389329285231001
 GameObject:
@@ -1158,19 +1159,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1094389328915497779}
         m_TargetAssemblyTypeName: UpgradeBehavior, Assembly-CSharp
-        m_MethodName: PurchaseSpeed2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6360183447827109723}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+        m_MethodName: PurchaseBulletDamage1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

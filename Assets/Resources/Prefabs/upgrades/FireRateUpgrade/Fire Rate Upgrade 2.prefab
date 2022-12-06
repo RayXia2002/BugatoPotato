@@ -252,8 +252,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294946816
+  m_fontColor: {r: 0, g: 0.6901961, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -831,6 +831,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeController: {fileID: 0}
+  purchaseSound: {fileID: 0}
+  rarity: 0
 --- !u!1 &8867977554050395626
 GameObject:
   m_ObjectHideFlags: 0
